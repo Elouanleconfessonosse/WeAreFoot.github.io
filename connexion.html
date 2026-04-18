@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="cssidentique.css">
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+        body{
+            background-image: url("Image/connexionBackground.png");
+            background-size: 102%;
+            overflow:hidden;
+            justify-content: center;
+            display: flex;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;        }
+        .tour{
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 20px;
+            width: 700px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            
+            
+        }
+        .logo{
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 4;
+       }
+        .tour header{
+            color: white;
+            font-family: monospace;
+            font-size: 30px;
+            text-align: center;
+            position: relative;
+            top: 0;
+            font-size: 40px;
+            margin-bottom: 40px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="accueil">
+        <a href="accueil.html">
+        <button>⚽Accueil</button>
+        </a>
+    </div>
+    <div class="containerInfo">
+        <div class="information">
+        <h2></h2>
+    </div>
+    </div>
+    <audio id="audio" style="display:none;">
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1></h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+    </div>
+    <div class="logo">
+        <img src="Image/logo_WAF.png" width="200px" height="102px"></img>
+    </div>
+    <div class="tour">
+        <header>Connexion</header>
+    <div class="forme">
+        <input type="text" id="id" name="identifiant" placeholder="Identifiant">
+    </div>   
+    <br><br>
+    <div class="forme">
+        <input type="password" id="mdp" name="mot_de_passe" placeholder="Votre mot-de-passe">
+    </div>  
+    <br><br> 
+
+    <button onclick="recevoirlesdonnees()">Se connecter</button>    
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, child,get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfGCcd6DH-n6kySvjDVtaPjwH2HheywUc",
+            authDomain: "projet-foot-31fb0.firebaseapp.com",
+            databaseURL: "https://projet-foot-31fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "projet-foot-31fb0",
+            storageBucket: "projet-foot-31fb0.firebasestorage.app",
+            messagingSenderId: "645399152056",
+            appId: "1:645399152056:web:0ed1c60365d15f2ebf7b4d"
+        };
+        let nomBase = ["coach/", "organisateurs/","utilisateurs/"];
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+        window.recevoirlesdonnees = async function() {
+    const ide = document.getElementById("id").value.trim();
+    const mdps = document.getElementById("mdp").value;
+
+    if (!ide || !mdps) {
+        informationErreur("Veuillez remplir tous les champs !");
+        return; 
+    }
+    try {
+        const emailTechnique = ide + "@WeAreFoot.com";
+        const verifiecompte = await signInWithEmailAndPassword(auth, emailTechnique, mdps);
+        const user = verifiecompte.user;
+        const nomBase = ["coach", "organisateurs", "utilisateurs"];
+        const dbRef = ref(database);
+        let trouve = false;
+        for (const dossier of nomBase) {
+            const user = await get(child(dbRef, `${dossier}/${ide}`));
+            
+            if (user.exists()) {
+                trouve = true;
+                renvoyerlutilisateur(dossier + "/", ide);
+                break;
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        if(error.code === "auth/wrong-password"){
+            informationErreur("Mot de passe incorrect !");
+        }
+    }
+    
+}
+        function renvoyerlutilisateur(element,ide){
+            if (element === "coach/"){
+                window.location.href = "coach_connecte.html";
+            }
+            else if (element === "organisateurs/"){
+                window.location.href = "organisateur_connecte.html";
+            }
+            else if (element === "utilisateurs/"){
+                window.location.href = "Joueur_joueuse_connecte.html";
+            }
+        }
+window.renvoyerlutilisateur = renvoyerlutilisateur;
+    </script>
+    <script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
+

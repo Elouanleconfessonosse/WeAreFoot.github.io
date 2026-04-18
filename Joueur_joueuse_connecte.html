@@ -1,0 +1,1176 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil joueur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Hand:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cssidentique.css">
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+        body{
+            background-image: url("Image/Nano\ Banana-2026-01-14-20_08_05\ \(1\).png");
+            background-size: cover;
+            justify-content: center;
+            display: flex;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        .logo{
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 14;
+        }
+        .containerstatistique{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .stats{
+            position: absolute;
+            top: 200px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            gap: 100px;
+            flex-wrap: wrap;
+            text-align: center;
+            left: 450px;
+            width: 1000px;
+            height: 825px;
+            background-color: rgba(0,0,0,0.67);
+            backdrop-filter: blur(4px);
+            border-radius: 30px;
+            border: 2px solid white;
+        }
+        .nomjoueur h1{
+            position: relative;
+            color: white;
+            font-weight: bold;
+            font-family: monospace;
+            top: -20px;
+            font-size: 100px;
+            text-align: center;
+
+        }
+        .cartonrouge:hover{
+            transition: all 0.5s ease;
+            box-shadow: 0px 0px 40px rgb(0, 152, 253);
+        
+        }
+        .cartonrouge{
+            display: flex;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(0, 145, 182, 0.651);
+            background-color: rgba(0, 204, 255, 0.062);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            box-shadow: 0px 0px 20px rgb(0, 152, 253);
+            transition: all 0.5s ease;
+        }
+        .cartonrouge h1{
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            translate: -50% -50%;
+            color: white;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .cartonrouge h2{
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            translate: -50% -50%;
+            color: rgb(255, 255, 255);
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 200px;
+        }
+        .drapeaucontainer{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0, 0, 0, 0.671);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 8;
+        }
+        .fermer button{
+            position:fixed;
+            top: 15px;
+            left: 30px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 60px;
+            transition: all 0.5s ease;
+        }
+        .fermer button:hover{
+            transition: all 0.5s ease;
+            transform: scale(1.1);
+        }
+        .fermer3 button{
+            position:fixed;
+            top: 15px;
+            left: 30px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 30px;
+            transition: all 0.5s ease;
+        }
+        .fermer3 button:hover{
+            transition: all 0.5s ease;
+            transform: scale(1.1);
+        }
+        .drapeau{
+    width: 1500px;
+    height: 900px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:100px;
+    left:10px;
+    border-radius: 30px;
+    border: 2px solid white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    backdrop-filter: blur(5px);
+    z-index: 9;
+    
+}
+.drapeaupays button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(29, 29, 29, 0.479);
+    width: 280px;
+    height: 280px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+.drapeaupays button img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    align-self: center;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+    
+}
+.drapeaupays button img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.drapeaupays button h1{
+    position: relative;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    align-self: center;
+    font-size: 24px;
+    
+}
+.boutondrapeau button{
+    position: absolute;
+    top: 850px;
+    left: 1535px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-family: monospace;
+    font-size: 30px;
+    width: 300px;
+    height: 100px;
+    z-index: 7;
+    perspective: 500px;
+    transition: all 0.5s ease;
+}
+.boutondrapeau button:hover{
+    background-color: rgba(29, 29, 29, 0.548);
+    transition: all 0.5s ease;
+}
+.cartedujoueur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    height: 490px;
+    z-index: 7;
+    position: relative;
+    top: 300px;
+    right: -1450px;
+    pointer-events: none;
+}
+
+.cartedujoueur .toty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    filter: brightness(0.85);
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.cartedujoueur .imagedujoueur {
+    position: relative;
+    z-index: 2;
+    margin-top: -70px;
+    width: 325px;
+    height: 300px;
+}
+
+.cartedujoueur h1 {
+    position: absolute;
+    bottom: 50px;
+    font-weight: bold;
+    font-size: 35px;
+    letter-spacing: 2px;
+    z-index: 3;
+    width: 100%;
+    color: white;
+    font-family:monospace;
+    text-align: center;
+}
+.cartedujoueur .flag{
+    position: absolute;
+    bottom: 30px;
+    width: 50px;
+    height: 30px;
+    z-index: 10;
+    border-radius: 5px;
+}
+.cartedujoueurcontainer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: none;
+            z-index: 6;
+            pointer-events: none;
+        }
+
+.stylecarte{
+    width: 1500px;
+    height: 900px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:100px;
+    left:50px;
+    border-radius: 30px;
+    border: 2px solid white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    backdrop-filter: blur(5px);
+    z-index: 9;
+    
+}
+.stylecheveux{
+    width: 600px;
+    height: 300px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:375px;
+    left:700px;
+    border-radius: 30px;
+    border: 2px solid white;
+    backdrop-filter: blur(5px);
+    z-index: 9;
+    
+}
+.stylecheveux h1{
+    color: white;
+    font: 30px;
+    font-family: monospace;
+    position: fixed;
+    top: 30px;
+    left: 150px;
+}
+.cartefifa button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(29, 29, 29, 0.479);
+    width: 280px;
+    height: 320px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+.cartefifa button img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    align-self: center;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+    
+}
+.cartefifa button img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.cartefifa button h1{
+    position: relative;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    align-self: center;
+    font-size: 24px;
+    
+}
+
+.cartefifacheveuxblond button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba(224, 198, 82, 0.329);
+    width: 70px;
+    height: 70px;
+    border-radius: 3000px;
+    object-fit: contain;
+    padding: 15px;
+    top: 20px;
+    border: 2px solid rgb(229, 245, 5);
+    border-radius: 30px;
+    margin: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cartefifacheveuxblond button:hover{
+    box-shadow: 0px 0px 20px goldenrod;
+    transition: all 0.3s ease;
+}
+.cartefifacheveuxbrun button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba(70, 50, 24, 0.349);
+    width: 70px;
+    top: 20px;
+    height: 70px;
+    border-radius: 3000px;
+    object-fit: contain;
+    padding: 15px;
+    border: 2px solid rgb(54, 40, 0);
+    border-radius: 30px;
+    margin: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cartefifacheveuxbrun button:hover{
+    box-shadow: 0px 0px 20px rgb(165, 132, 71);
+    transition: all 0.3s ease;
+}
+.cartefifacheveuxroux button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba(190, 54, 13, 0.329);
+    width: 70px;
+    height: 70px;
+    top: 20px;
+    border-radius: 3000px;
+    object-fit: contain;
+    padding: 15px;
+    border: 2px solid rgb(150, 43, 0);
+    border-radius: 30px;
+    margin: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cartefifacheveuxroux button:hover{
+    box-shadow: 0px 0px 20px rgb(194, 57, 15);
+    transition: all 0.3s ease;
+}
+.containerboutoncarte{
+    position: fixed;
+            top: 0;
+            left: 0;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0, 0, 0, 0.671);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 8;
+}
+.boutoncarte{
+    width: 1150px;
+    height: 600px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:300px;
+    left: 450px;
+    border-radius: 30px;
+    border: 2px solid white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    backdrop-filter: blur(5px);
+    z-index: 9;
+}
+.cartefifa button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(29, 29, 29, 0.479);
+    width: 280px;
+    height: 320px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+.cartebouton button img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    align-self: center;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+    
+}
+.cartebouton button img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.cartebouton button h1{
+    position: relative;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    align-self: center;
+    font-size: 24px;
+    
+}
+.cartebouton button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(29, 29, 29, 0.479);
+    width: 280px;
+    height: 320px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+.containerstyle{
+    position: fixed;
+            top: 0;
+            left: 0;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0, 0, 0, 0.671);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 8;
+}
+.containerstylecheveux{
+    position: fixed;
+            top: 0;
+            left: 0;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0, 0, 0, 0.671);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 8;
+}
+.cartedujoueur .cheveux {
+    position: absolute;
+    top: -110px;      
+    left: 50%;
+    transform: translateX(-50%);
+    width: 660px;        
+    height: auto;
+    z-index: 4;           
+    pointer-events: none;
+}
+.posBouton{
+    left: 90%;
+    top:22%;
+}
+</style>
+</head>
+<body>
+    <div class="fond">
+    <video autoplay muted loop playsinline class="loader">
+  <source src="Image/loader.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="containerprofil">
+    <h1>Profil</h1>
+    <div class="fermiere45">
+            <button onclick="fermerProfil()">✖</button>
+            </div>
+    <button onclick="OuvrirInputMdp()" id="bouton3">Changer de mot-de-passe</button>
+    <button onclick="OuvrirInputIdentifiant()" id="bouton4">Changer d'identifiant</button>
+    <button onclick="supprimerMonCompte()" id="bouton5">Supprimer mon compte</button>
+</div>
+    </div>
+    <div class="containerMdp">
+        <input type="password" id="mdp" name="mdp" placeholder="Veuillez entrez votre nouveau mot-de-passe">
+        <button onclick="enregistrerMotDePasse()">
+    Enregistrer
+    </button>
+    </div>
+    <div class="containerId">
+        <input type="text" id="id" name="id" placeholder="Veuillez entrez votre nouvel identifiant">
+        <button onclick="enregistrerIdentifiant()">
+    Enregistrer
+    </button>
+    </div>
+    <div class="posBouton">
+    <button onclick="ModifierMonCompte()">
+    Modifier mon compte
+</button>
+<button onclick="deconnexion()">
+    Se déconnecter
+</button>
+    </div>
+    <div class="classement">
+</div>
+    <div class="containerboutoncarte">
+    <div class="boutoncarte">
+        <div class="fermer">
+        <button onclick="fermer()">✖</button>
+        </div>
+        <div class="cartebouton">
+            <button onclick="ouvrirchoixdrapeau()">
+                <img src="Image/S25FCPro.png" id="flags">
+                <h1>Choisis mon drapeau</h1>
+            </button>
+        </div>
+        <div class="cartebouton">
+            <button onclick="ouvrirchoixcoupe()">
+                <img src="Image/S25FCPro.png" id="coupe">
+                <h1>Choisis ta coupe de cheveux</h1>
+            </button>
+        </div>
+        <div class="cartebouton">
+            <button onclick="ouvrirchoixstyle()">
+                <img src="Image/S25FCPro.png" id="styles">
+                <h1>Changer le style</h1>
+            </button>
+        </div>
+    </div>
+    </div>
+   <div class="containerstyle">
+    <div class="stylecarte">
+        <div class="fermer">
+        <button onclick="fermer()">✖</button>
+        </div>
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S25FCPro')">
+                <img src="Image/S25FCPro.png">
+                <h1>FC Pro 25</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S26FUTHeroes')">
+                <img src="Image/S26FUTHeroes.png">
+                <h1>FUT Heroes 26</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S26TOTW')">
+                <img src="Image/S26TOTW.png">
+                <h1>TOTW 26</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S26IconLegend')">
+                <img src="Image/S26IconLegend.png">
+                <h1>Icon Legend 26</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S25TOTY')">
+                <img src="Image/S25TOTY.png">
+                <h1>TOTY 25</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S24TOTY')">
+                <img src="Image/S24TOTY.png">
+                <h1>TOTY 24</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S25ChampionsLeague')">
+                <img src="Image/S25ChampionsLeague.png">
+                <h1>Champions League</h1>
+            </button>
+        </div>
+
+        <div class="cartefifa">
+            <button onclick="choisirstyle('S24IconLegend')">
+                <img src="Image/S24IconLegend.png">
+                <h1>Icon Legend 24</h1>
+            </button>
+        </div>
+
+    </div>
+</div>
+<div class="containerstylecheveux">
+    <div class="stylecheveux">
+        <div class="fermer3">
+        <button onclick="fermer()" class="fermer">✖</button>
+        </div>
+        <h1>Couleurs de cheveux:</h1>
+        <div class="cartefifacheveuxblond">
+            <button onclick="choisirstylecheveux('Blond')">
+            </button>
+        </div>
+
+        <div class="cartefifacheveuxbrun">
+            <button onclick="choisirstylecheveux('Brun')">
+            </button>
+        </div>
+
+        <div class="cartefifacheveuxroux">
+            <button onclick="choisirstylecheveux('Roux')">
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="cartedujoueurcontainer">
+        <div class="cartedujoueur">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="" class="flag" id="flag">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheveuxl.png" class="cheveux">
+            <h1 id="nom"></h1>
+        </div>
+        </div>
+    <div class="boutondrapeau">
+        <button onclick="ouvrirchoixbouton()">Personaliser ma carte</button>
+    </div>
+    <div class="drapeaucontainer">
+        <div class="drapeau">
+            <div class="fermer">
+            <button onclick="fermer()" class="fermer">✖</button>
+            </div>
+            <div class="drapeaupays">
+    <button onclick="choisirdrapeau('France')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg">
+        <h1>France</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Angleterre')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg">
+        <h1>Angleterre</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Espagne')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg">
+        <h1>Espagne</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Italie')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg">
+        <h1>Italie</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Allemagne')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Germany_%283-2%29.svg/250px-Flag_of_Germany_%283-2%29.svg.png">
+        <h1>Espagne</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Portugal')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg">
+        <h1>Portugal</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Belgique')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg">
+        <h1>Belgique</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Bresil')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg">
+        <h1>Brésil</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Argentine')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg">
+        <h1>Argentine</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Uruguay')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Uruguay.svg">
+        <h1>Uruguay</h1></button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Maroc')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg">
+        <h1>Maroc</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Albanie')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Albania.svg">
+        <h1>Albanie</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Finlande')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg">
+        <h1>Finlande</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('USA')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg">
+        <h1>USA</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Chili')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg">
+        <h1>Chili</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Canada')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg">
+        <h1>Canada</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Colombie')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg">
+        <h1>Colombie</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Japon')">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg">
+        <h1>Japon</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Senegal')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Flag_of_Senegal.svg">
+        <h1>Sénégal</h1>
+    </button>
+</div>
+<div class="drapeaupays">
+    <button onclick="choisirdrapeau('Pays-Bas')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg">
+        <h1>Pays-Bas</h1>
+    </button>
+</div>
+</div>
+</div>
+    <div class="containerstatistique">
+        <div class="nomjoueur">
+        <h1>Vos statistiques</h1>
+        </div>
+        <div class="stats">
+            <div class="cartonrouge">
+               <h1>BUTS</h1>
+               <h2>0</h2>
+            </div>
+            <div class="cartonrouge">
+                <h1>Passes decisives</h1>
+               <h2>0</h2>
+            </div>
+            <div class="cartonrouge">
+                <h1>Cartons rouges</h1>
+               <h2>0</h2>
+
+            </div>
+            <div class="cartonrouge">
+                <h1>Cartons jaunes</h1>
+               <h2>0</h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="containerInfo">
+        <div class="information">
+        <h2></h2>
+    </div>
+    </div>
+    <audio id="audio" style="display:none;">
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1></h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+    </div>
+    <div class="logo">
+        <img src="Image/logo_WAF.png" width="200px" height="102px"></img>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, deleteUser,onAuthStateChanged,signOut,updateEmail,updatePassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getDatabase, ref, set,get,child,remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfGCcd6DH-n6kySvjDVtaPjwH2HheywUc",
+            authDomain: "projet-foot-31fb0.firebaseapp.com",
+            databaseURL: "https://projet-foot-31fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "projet-foot-31fb0",
+            storageBucket: "projet-foot-31fb0.firebasestorage.app",
+            messagingSenderId: "645399152056",
+            appId: "1:645399152056:web:0ed1c60365d15f2ebf7b4d"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+ouvrircartejoueur();
+function ouvrirchoixdrapeau(){
+    const containerdrapeau = document.querySelector(".drapeaucontainer");
+    containerdrapeau.style.display = "flex";
+    containerdrapeau.style.zIndex = "8";
+    const panneauDrapeau = document.querySelector(".drapeau");
+    document.querySelector(".classement-liste").style.zIndex = "1";
+    panneauDrapeau.style.zIndex = "9";
+    const container = document.querySelector(".containerboutoncarte");
+    container.style.display = "none";
+    const carteContainer = document.querySelector(".cartedujoueurcontainer");
+    carteContainer.style.zIndex = "10";
+    ouvrircartejoueur();
+}
+let joueurId = "";
+onAuthStateChanged(auth, async (utilisateur)=>{
+    if(!utilisateur){
+        window.location.href = "connexion.html";
+        return;
+    }
+    const uid = utilisateur.uid;
+    const joueur = await get(ref(database, "utilisateurs"));
+    const joueurs = joueur.val();
+    for(const id in joueurs){
+        if(joueurs[id].uid === uid){
+            joueurId = joueurs[id].identifiant;
+            break;
+        }
+    }
+    document.querySelector(".fond").style.display ="flex";
+    await datajoueur();
+    await ouvrircartejoueur();
+    await classement();
+    document.querySelector(".fond").style.display = "none";
+})
+function choisirdrapeau(drapeau){
+    set(ref(database, "utilisateurs/" + joueurId + "/drapeau"),drapeau);
+    ouvrircartejoueur();
+}
+function ouvrirchoixstyle(){
+    const containerdrapeau = document.querySelector(".containerstyle");
+    containerdrapeau.style.display = "flex";
+    const container = document.querySelector(".containerboutoncarte");
+    container.style.display = "none";
+    document.querySelector(".classement-liste").style.zIndex = "1";
+    document.querySelector(".cartedujoueurcontainer").style.zIndex = "10";
+}
+function ouvrirchoixbouton(){
+    const container = document.querySelector(".containerboutoncarte");
+    container.style.display = "flex";
+}
+async function ouvrircartejoueur(){
+    const joueurdrapeau = await get(ref(database,"utilisateurs/" + joueurId + "/drapeau"));
+    const joueurdrapeauval = joueurdrapeau.val();
+    const joueurnom = await get(ref(database,"utilisateurs/" + joueurId + "/nom"));
+    const joueurnomval = joueurnom.val();
+    const drapeau = document.getElementById("flag") || "France";
+    drapeau.src = drapeaux[joueurdrapeauval];
+    const h1nom = document.getElementById("nom");
+    h1nom.textContent = joueurnomval;
+         
+
+}
+const dbref = ref(database);
+async function datajoueur(){
+    const joueur = await get(child(dbref, "utilisateurs/" + joueurId));
+    const joueurval = joueur.val();
+    const imagecheveux = document.querySelector(".cheveux");
+    const images = document.querySelector(".toty");
+    const image2 = document.getElementById("styles");
+    const drapeau = document.getElementById("flags") || "France";
+    const coupedecheveux = document.getElementById("coupe");
+    coupedecheveux.src = cheveux[joueurval.cheveux] || cheveux["Blond"];
+    imagecheveux.src = cheveux[joueurval.cheveux] || cheveux["Blond"];
+    drapeau.src = drapeaux[joueurval.drapeau];
+    image2.src = cartefifas[joueurval.styleCarte];
+    images.src = cartefifas[joueurval.styleCarte]; 
+    document.querySelector(".cartedujoueurcontainer").style.display = "block";
+    const statistiques = document.querySelectorAll(".cartonrouge h2");
+    statistiques[0].textContent = joueurval.stat?.but || 0;
+    statistiques[1].textContent = joueurval.stat?.passedecissive || 0;
+    statistiques[2].textContent = joueurval.stat?.cartonjaune || 0;
+    statistiques[3].textContent = joueurval.stat?.cartonrouge || 0;
+}
+function choisirstyle(style){
+    set(child(dbref, "utilisateurs/" + joueurId + "/styleCarte"), style);
+    datajoueur();
+}
+function choisirstylecheveux(cheveux){
+    set(child(dbref,"utilisateurs/" + joueurId + "/cheveux"),cheveux);
+    datajoueur();
+}
+function ouvrirchoixcoupe(){
+    document.querySelector(".containerstylecheveux").style.display = "flex";
+    const container = document.querySelector(".containerboutoncarte");
+    container.style.display = "none";
+    document.querySelector(".cartedujoueurcontainer").style.zIndex = "10";
+}
+function fermer(){
+    if(document.querySelector(".containerstylecheveux").style.display === "flex"){
+        document.querySelector(".containerstylecheveux").style.display = "none";
+        document.querySelector(".containerboutoncarte").style.display = "flex"
+        return;
+    }
+    else if(document.querySelector(".containerstyle").style.display === "flex"){
+        document.querySelector(".containerstyle").style.display = "none";
+        document.querySelector(".containerboutoncarte").style.display = "flex"
+        return;
+    }
+    else if(document.querySelector(".drapeaucontainer").style.display === "flex"){
+        document.querySelector(".drapeaucontainer").style.display = "none";
+        document.querySelector(".containerboutoncarte").style.display = "flex"
+        return;
+    }
+    document.querySelector(".containerboutoncarte").style.display = "none";
+}
+async function classement(type = "but") {
+  const classementdiv = document.querySelector(".classement");
+  const listejoueur = await get(child(dbref, "utilisateurs/"));
+  const listejoueurval = listejoueur.val() || {};
+  document.querySelector(".fond").style.display = "block";
+  classementdiv.innerHTML = `<div class="classement-liste">
+    <h1>Classement</h1>
+    <button id="classement-but" onclick="classement('but')">Meilleur buteur</button>
+    <button id="classement-passe" onclick="classement('passe')">Meilleur passeur</button>
+    <button id="classement-cartonrouge" onclick="classement('cartonrouge')">Plus grand nombre de carton rouge</button>
+    <button id="classement-cartonjaune" onclick="classement('cartonjaune')" style="margin-bottom:40px;">Plus grand nombre de carton jaune</button>
+    </div>`;
+  const liste = classementdiv.querySelector(".classement-liste");
+  const idBoutonActif = "classement-" + type;
+  const boutonActif = document.getElementById(idBoutonActif);
+  boutonActif.classList.add("actif");
+
+  let tableaujoueurbut = [];
+  let tableaujoueurpasse = [];
+  let tableaujoueurcartonrouge = [];
+  let tableaujoueurcartonjaune = [];
+  let index = [0,"👑","🥈","🥉",4,5,6,7,8,9,10];
+  for (const joueur in listejoueurval) {
+    tableaujoueurbut.push([joueur, listejoueurval[joueur].stat?.but || 0]);
+    tableaujoueurpasse.push([joueur, listejoueurval[joueur].stat?.passedecissive || 0]);
+    tableaujoueurcartonrouge.push([joueur, listejoueurval[joueur].stat?.cartonrouge || 0]);
+    tableaujoueurcartonjaune.push([joueur, listejoueurval[joueur].stat?.cartonjaune || 0]);
+  }
+
+  tableaujoueurbut.sort((a, b) => b[1] - a[1]);
+  tableaujoueurpasse.sort((a, b) => b[1] - a[1]);
+  tableaujoueurcartonrouge.sort((a, b) => b[1] - a[1]);
+  tableaujoueurcartonjaune.sort((a, b) => b[1] - a[1]);
+  let types = ["but", "passe", "cartonrouge", "cartonjaune"];
+  let tableau = [tableaujoueurbut, tableaujoueurpasse, tableaujoueurcartonrouge, tableaujoueurcartonjaune];
+  let emojie = ["⚽","👟","🟥","🟨"];
+  for(let idx in tableau){
+
+  if(type === types[idx]){
+  for (let i = 0; i < tableau[idx].length && i < 10; i++) {
+    const rang = i + 1;
+    if(tableau[idx][i][0] === joueurId){
+    liste.innerHTML += `
+      <div class="classement-liste-joueur" data-rang="${rang}">
+        <span class="rang">${index[rang]}</span><span class="nom">Vous</span><span class="buts">${tableau[idx][i][1]} ${emojie[idx]}</span>
+      </div>`;
+  }else{
+    liste.innerHTML += `
+      <div class="classement-liste-joueur" data-rang="${rang}">
+        <span class="rang">${index[rang]}</span><span class="nom">${tableau[idx][i][0]}</span><span class="buts">${tableau[idx][i][1]} ${emojie[idx]}</span>
+      </div>`;
+  }
+}
+}
+  }document.querySelector(".fond").style.display = "none";
+}
+async function supprimerMonCompte() {
+    let identifiant = joueurId;
+    const user = auth.currentUser;
+    if (confirm("Veux-tu vraiment supprimer ton compte définitivement ?")) {
+        try {
+            await remove(ref(database, "utilisateurs/" + identifiant));
+            await deleteUser(user);
+            window.location.href = "connexion.html";
+        } catch (error) {
+            console.error(error);
+            if (error.code === 'auth/requires-recent-login') {
+                informationErreur("Veuillez vous déconnecter et vous reconnecter avant de supprimer votre compte.");
+        }
+        }
+    }
+};
+async function deconnexion(){
+    await signOut(auth);
+    window.location.href = "connexion.html";
+}
+function OuvrirInputMdp(){
+    document.querySelector(".containerMdp").style.display = "flex";
+}
+function OuvrirInputIdentifiant(){
+    document.querySelector(".containerId").style.display = "flex";
+}
+async function enregistrerMotDePasse(){
+    const mdp = document.getElementById("mdp").value;
+try{
+    await updatePassword(auth.currentUser, mdp);
+    informationErreur("Nouveau mot-de-passe enregistré");
+    document.querySelector(".containerMdp").style.display ="none";
+}catch(error){
+    console.error(error);
+    if(error.code === "auth/requires-recent-login"){
+        informationErreur("Vous allez etre redirigé vers la page de connexion.");
+        setTimeout(() =>{
+            window.location.href = "connexion.html";
+        },2000)
+    }
+}
+}
+async function enregistrerIdentifiant(){
+    const id = document.getElementById("id").value;
+    const emailTechnique = id.trim() + "@WeAreFoot.com";
+try{    
+    await set(ref(database,"utilisateurs/" + joueurId + "/identifiant"), id);
+    const donneeUtilisateur = await get(child(dbref,"utilisateurs/" + joueurId));
+    const donnee = donneeUtilisateur.val();
+    await updateEmail(auth.currentUser, emailTechnique);
+    await set(ref(database,"utilisateurs/" + id),donnee);
+    await remove(ref(database,"utilisateurs/" + joueurId));
+    joueurId = id;
+    informationErreur("Nouvel identifiant enregistré en" + id);
+    document.querySelector(".containerId").style.display ="none";
+}catch(error){
+    console.error(error);
+    if(error.code === "auth/requires-recent-login"){
+        informationErreur("Vous allez etre redirigé vers la page de connexion.");
+        setTimeout(() =>{
+            window.location.href = "connexion.html";
+        },2000)
+    }
+    }
+}
+function fermerProfil(){
+    document.querySelector(".containerprofil").style.display = "none";
+}
+function ModifierMonCompte(){
+    document.querySelector(".containerprofil").style.display = "flex";
+}
+window.ModifierMonCompte =ModifierMonCompte;
+window.fermerProfil = fermerProfil;
+window.enregistrerMotDePasse = enregistrerMotDePasse;
+window.enregistrerIdentifiant = enregistrerIdentifiant;
+window.OuvrirInputIdentifiant = OuvrirInputIdentifiant;
+window.OuvrirInputMdp = OuvrirInputMdp;
+window.deconnexion = deconnexion;
+window.supprimerMonCompte = supprimerMonCompte;
+window.classement = classement;
+window.fermer =fermer;
+window.ouvrirchoixcoupe = ouvrirchoixcoupe;
+window.choisirstylecheveux = choisirstylecheveux;
+window.ouvrirchoixbouton = ouvrirchoixbouton;
+window.ouvrirchoixstyle = ouvrirchoixstyle;
+window.choisirstyle = choisirstyle;
+window.datajoueur = datajoueur;
+window.ouvrircartejoueur = ouvrircartejoueur;
+window.choisirdrapeau = choisirdrapeau;
+window.ouvrirchoixdrapeau = ouvrirchoixdrapeau;
+    </script>
+    <script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
+

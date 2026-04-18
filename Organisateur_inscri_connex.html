@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription/Connection Organisateur</title>
+    <link rel="stylesheet" href="cssidentique.css">
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+        html{
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        body{
+            background-image: url("Image/tournoidefoootabll16.jpg");
+            background-size: cover;
+            justify-content: center;
+            display: flex;
+            overflow: hidden;
+        }
+        .inscrire{
+            position: fixed;
+            display: none;
+            width: 50vw;
+            top: 50%;
+            left: 50%;
+            height: 50vh;
+            translate: -50% -50%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;  
+            z-index: 1; 
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        .inscrire button{
+            font-size: 3vh;
+            font-family: monospace;
+            border-radius: 30px;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            width: 15vw;
+            height: 20vh;
+            margin-right: -100px;
+            margin-left: -100px;
+            text-align: center;
+            border: 5px solid white;
+            transition: all 0.5s ease;
+        }
+        .inscrire button:hover{
+            transform: scale(1.1);
+            transition: all 0.5s ease;
+            box-shadow: 0px 0px 20px white;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        .logo{
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 6;
+       }
+       .inputtah{
+        position: absolute;
+        translate: 0% 50%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        height: 300px;
+        width: 400px;
+        flex-direction: column;
+        background-color: rgba(0,0,0,0.4);
+        backdrop-filter: blur(3px);
+        border-radius: 20px;
+        z-index: 2;
+       }
+       .inputtah label{
+        font-family: monospace;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        position: absolute;
+        top: 50px;
+       }
+       .inputtah input{
+        color: white;
+        font-family: monospace;
+        font-size: 15px;
+        background-color:black;
+        z-index: 2;
+        
+        
+        
+       }
+       .inputtah button{
+        background-color: black;
+        border-radius: 15px;
+        width: 150px;
+        height: 50px;
+        color: white;
+        font-family: monospace;
+        font-size: 20px;
+        border: none;
+       }
+       .inputtah button:hover{
+        transform: scale(1.1);
+       }
+       a{
+        text-decoration: none;
+       }
+        .tour{
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            border-radius: 20px;
+            width: 0px;
+            height: 0px;
+            top: 0;
+            left: 50%;
+            translate: -50% -50%;
+            padding-top: 50px;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            transition: all 0.5s ease;
+            
+        }
+        .tour header{
+            color: white;
+            font-family: monospace;
+            font-size: 30px;
+            text-align: center;
+            position: relative;
+            top: 0;
+            font-size: 40px;
+            margin-bottom: 40px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="containerInfo">
+        <div class="information">
+        <h2></h2>
+    </div>
+    </div>
+    <audio id="audio" style="display:none;">
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1></h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+
+    </div>
+<div class="logo">
+        <img src="Image/logo_WAF.png" width="200px" height="102px"></img>
+    </div>
+    <div class="tour">
+        <h1>Inscription</h1>
+    
+    <div class="forme">
+        <input type="text" id="id" name="identifiant" placeholder="Identifiant">
+    </div>   
+    <br><br>
+    <div class="forme">
+        <input type="password" id="mdp" name="mot_de_passe" placeholder="Votre mot-de-passe">
+    </div>  
+    <br><br> 
+
+    <button onclick="envoyerlesdonnees()">S'inscrire</button>    
+    </div>
+    <div class="inputtah">
+        
+        <label>Entrez le code administrateur: </label><br><br><br><br><br><br>
+        <input type="text" name="numOrga" style="width: 200px;height: 20px;border-radius: 20px;padding-left: 10px;"><br>
+        <button onclick="envoyerLeCode()">Soummettre</button>
+        
+    </div>
+    <div class="inscrire">
+        <button onclick="ouvririnscription()">Inscription</button>
+        <a href="connexion.html">
+        <button>Connexion</button>
+        </a>
+    </div>
+    <div class="accueil">
+        <a href="accueil.html">
+        <button>⚽Accueil</button>
+        </a>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set,get,child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfGCcd6DH-n6kySvjDVtaPjwH2HheywUc",
+            authDomain: "projet-foot-31fb0.firebaseapp.com",
+            databaseURL: "https://projet-foot-31fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "projet-foot-31fb0",
+            storageBucket: "projet-foot-31fb0.firebasestorage.app",
+            messagingSenderId: "645399152056",
+            appId: "1:645399152056:web:0ed1c60365d15f2ebf7b4d"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+        const dbref = ref(database);
+        window.envoyerlesdonnees = async function() {
+            
+            const identifiant = document.getElementById("id").value;
+            const mdp = document.getElementById("mdp").value;
+            const chemin = ["coach","utilisateurs","organisateurs"];
+            if (!identifiant) {
+                informationErreur("Veuillez entrer un identifiant !");
+                return;
+            }
+            for(const i in chemin){
+                const user = await get(child(dbref, chemin[i] + "/" + identifiant));
+                if(user.exists()){
+                    informationErreur("Identifiant déjà utilisé !");
+                    return;
+                }
+            }
+            if (!mdp) {
+                informationErreur("Veuillez entrer un mot de passe !");
+                return;
+            }
+            const emailTechnique = identifiant.trim() + "@WeAreFoot.com";
+            const compteutilisateur = await createUserWithEmailAndPassword(auth, emailTechnique, mdp);
+            const user = compteutilisateur.user;
+            const donnees = {
+                identifiant: identifiant,
+                uid: user.uid
+                
+            };
+
+           await set(ref(database, 'organisateurs/' + identifiant), donnees)
+           window.location.href = "connexion.html";
+           document.querySelectorAll('input').forEach(input => {
+                    if(input.type === 'text' || input.type === 'password') 
+                        input.value = "";
+                    });
+                
+        }
+        let code = 1234
+        window.envoyerLeCode = function()  {
+            const coode = document.querySelector("[name='numOrga']").value;
+            const boutons = document.querySelectorAll(".inscrire button");
+            const chiffre = document.querySelector(".inputtah");
+            if(!coode){
+                informationErreur("Mauvais code, veuillez réessayer !");
+                return;
+            }
+            else if (code == coode) {
+                document.querySelector(".inscrire").style.display = "flex";
+                setTimeout(()=>{
+                    boutons[1].style.marginLeft= "50px";
+                    boutons[0].style.marginRight= "50px";
+                },100)
+                chiffre.style.display = 'none';
+                
+            }
+            else {
+                informationErreur("Code administrateur incorrect, veuillez réessayer !");
+                }
+        }
+window.ouvririnscription = function(){
+            document.querySelector(".tour").style.display = "flex";
+            document.querySelector(".inscrire").style.display = "none";
+            setTimeout(()=>{
+                document.querySelector(".tour").style.width = "700px";
+                document.querySelector(".tour").style.height = "480px";
+                document.querySelector(".tour").style.top = "50%";
+            },100);
+        }
+    </script>
+    <script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
+

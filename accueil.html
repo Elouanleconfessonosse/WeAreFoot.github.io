@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeAreFoot</title>
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+        body{
+            background-color: rgb(29, 28, 28);
+            justify-content: center;
+            display: flex;
+            background-image: url("Image/terrain.jpg");
+            background-size: cover;
+            position: relative;
+            
+            
+        }
+        header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            
+        }
+       header h1{
+        font-size: 40px;
+        font-family: monospace;
+        text-align: center;
+        color: white;
+       }
+    .container{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 300px;
+        height: 300px;
+        background-color: rgb(75, 72, 72);
+        border-radius: 30px;
+       }
+       
+       .container h1{
+        font-family: monospace;
+        font-size: 30px;
+       }
+       .logo{
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        top: 100px;
+        pointer-events: none;
+        }
+        .choixmenu{
+            position:fixed;
+            left: 50vw;
+            top: 65vh;
+            translate: -50% -50%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            z-index: 4;
+            border-radius: 15px;
+            width: 400px;
+            height: 400px;
+            text-align: center;
+        }
+        .choixmenu button{
+            background-color: rgba(0, 0, 0, 0.600);
+            backdrop-filter: blur(3px);
+            border: 4px solid rgb(0, 0, 0);
+            border-radius: 30px;
+            color: white;
+            font-family: monospace;
+            font-size: 30px;
+            width: 300px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        .choixmenu button:hover{
+            transform: scale(1.20);
+            transition: all 0.5s ease;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        .info{
+            top: 70vh;
+            left: 80vw;
+            translate: -50% -50%;
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.322);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 5px black solid;
+            width: 400px;
+            height: 350px;
+            pointer-events: none;
+        }
+        .info h1{
+            color:white;
+            font-family: monospace;
+            font-size: 25px;
+            text-align: center;
+        }
+        .info p{
+            color: white;
+            font-family: monospace;
+            font-size: 20px;
+            
+        }
+        .actu button{
+            bottom: 70px;
+            position: relative;
+            width: 80px;
+            height: 30px;
+            right: 0.5;
+            z-index: 2;
+            border-radius: 15px;
+            background-color: rgb(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            font-family: monospace;
+            color: white;
+            border: 2px solid rgb(255, 255, 255);
+            transition: all 0.5s ease;
+        }
+        .actu img.anim {
+            opacity: 0;
+        }
+        .actu button:hover{
+            transform: scale(1.05);
+            transition: all 0.5s ease;
+        }
+        .actu img{
+            position: relative;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+        .choixmenu h1{
+            text-align: center;
+            font-size: 40px;
+            font-family:monospace;
+            position: fixed;
+            right:760px;
+            bottom: 450px;
+            color: black; 
+            letter-spacing: 2px;
+            
+        }
+    </style>
+    <link rel="stylesheet" href="cssidentique.css">
+</head>
+<body>
+    <header>
+        
+    </header>
+    <audio id="audio" style="display:none;" controls>
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1>Musique</h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+    </div>
+    <div class="logo">
+        <img src="Image/logo_WAF.png" width="600px" height="306px"></img>
+    </div>
+    <div class="actu">
+        <h1>Real Madrid 🆚 FC Barcelone 🔥</h1>
+        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/barcacelona-vs-real-madrid-flyer-template-design-a710430caf605c3d3cd3a2ad08ebe068_screen.jpg?ts=1680705199" width="450px" height="450px">
+        <button onclick="actuPrecedente()" >←</button>
+        <button onclick="actuSuivante()">→</button>
+    </div>
+    <div class="choixmenu">
+            <a href="Organisateur_inscri_connex.html">
+            <button>Organisateur</button>
+            </a>
+            <br><br><br>
+            <a href="Joueur_joueuse_inscri.html">
+            <button>Joueur/joueuse</button>
+            </a>
+            <br><br><br>
+            <a href="Coach_inscrit_connection.html">
+            <button>Coach</button>
+            </a>
+    </div>
+    <div class="info">
+        <h1>&nbsp;A quoi sert ce site ?</h1>
+        <ul>
+            <p>⚽ Organise des tournois de foot.</p>
+            <p>📊 Suis tes stats en direct.</p>
+            <p>📅 Gère tes matchs (score, cartons…).</p>
+            <p>🏆 Rejoins une communauté!</p>
+            <p>🔊 Mixe foot et musique.</p>
+        </ul>
+    </div>
+    <script>
+        let indexActu = 0
+        const actualites = [
+    {
+        info: "Real Madrid 🆚 FC Barcelone 🔥",
+        image: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/barcacelona-vs-real-madrid-flyer-template-design-a710430caf605c3d3cd3a2ad08ebe068_screen.jpg?ts=1680705199"
+    },
+    {
+        info: "But décisif de Jude Bellingham ⚽👑",
+        image: "https://www.lequipe.fr/_medias/img-photo-jpg/le-milieu-de-terrain-du-real-madrid-jude-bellingham-lors-du-match-de-liga-contre-osasuna-le-7-octobr/1500000001851041/374:13,1668:1308-828-828-75/a0479.jpg"
+    },
+    {
+        info: "Carton rouge du capitaine 🟥😱",
+        image: "https://assets-fr.imgfoot.com/media/cache/1200x1200/ramos-seville.jpg"
+    },
+    {
+        info: "Victoire du Real Madrid au Bernabéu 🏟️🤍",
+        image: "https://preview.redd.it/santiago-bernabeu-amazing-v0-jo7oeumy43wc1.jpg?width=640&crop=smart&auto=webp&s=9e8db02d504f05964be72e74568ffb161b608613"
+    },
+    {
+        info: "Mbappé en feu cette saison 🚀⚡",
+        image: "https://www.lequipe.fr/_medias/img-photo-jpg/kylian-mbappe-celebre-son-but-qui-a-scelle-la-victoire-du-real-contre-l-espanyol-2-0-manu-fernandez-/1500000002276241/627:39,1921:1333-828-828-75/6cb71.jpg"
+    },
+    {
+        info: "Arrêt incroyable de Courtois 🧤🦾",
+        image: "https://www.lequipe.fr/_medias/img-photo-jpg/thibaut-courtois-apres-la-qualification-du-real-madrid-face-au-psg-en-huitiemes-de-finale-de-la-ligue-des-champions-a-reau-presse-sports/1500000001647551/450:298,1471:1319-828-828-75/ac884"
+    },
+    {
+        info: "Ambiance folle avant le match 🎶🔥",
+        image: "https://www.leparisien.fr/resizer/IB2cIzM8lV1x5pMv0GE-izxTIHQ=/622x434/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/J4ACQG3355FT3HLH3ZP7TL32EY.jpg"
+    },
+    {
+        info: "Rodrygo décisif en fin de match ⏱️⚽",
+        image: "https://assets-fr.imgfoot.com/media/cache/1200x1200/rodrygo-2425.jpg"
+    }
+];
+function changerActualite() {
+  const titreActu = document.querySelector(".actu h1");
+  const imageActu = document.querySelector(".actu img");
+  imageActu.classList.add("anim");
+  setTimeout(() => {
+    titreActu.textContent = actualites[indexActu].info;
+    imageActu.src = actualites[indexActu].image;
+    imageActu.classList.remove("anim");
+  }, 600);
+}
+
+function actuPrecedente() {
+  indexActu = (indexActu - 1 + actualites.length) % actualites.length;
+  changerActualite();
+}
+
+function actuSuivante() {
+  indexActu = (indexActu + 1) % actualites.length;
+  changerActualite();
+}
+
+setInterval(actuSuivante, 4000);
+</script>
+<script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
+
+
+

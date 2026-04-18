@@ -1,0 +1,1901 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion équipe</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="cssidentique.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Changa+One:ital@0;1&family=Edu+SA+Hand:wght@400..700&family=Rubik+Glitch&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+       body{
+            background-image: url("Image/Nano\ Banana-2026-01-14-20_08_05\ \(1\).png");
+            background-size: cover;
+            overflow:hidden;
+            justify-content: center;
+            display: flex;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        .containerdetout{
+            width: 2000px;
+            height: 2000px;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.671);
+            backdrop-filter: blur(5px);
+        }
+        .tour{
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 20px;
+            width: 700px;
+            height: 480px;
+            top: 325px;
+            right: 605px;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            
+        }
+        .logo{
+        position: fixed;
+        top: 30px;
+        right: 100px;
+        z-index: 1;
+        }
+        .containercreer{
+            position: fixed;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0,0,0,0.67);
+            backdrop-filter: blur(5px);
+            z-index: 101;
+            top: 0;
+            left: 0;
+            display: flex;
+        }
+        .containercreer button{
+            position: fixed;
+            top: 455px;
+            right: 810px;
+            background-color: black;
+            text-align: center;
+            border-radius: 20px;
+            border: 3px solid white;
+            width: 400px;
+            height: 200px;
+            font-family: monospace;
+            color: white;
+            font-size: 35px;
+            z-index: 101;
+        }
+        .inputlabel{
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 20px;
+            width: 780px;
+            height: 670px;
+            top: 230px;
+            right: 600px;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .inputlabel2{
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border-radius: 20px;
+            width: 820px;
+            height: 500px;
+            top: 310px;
+            right: 650px;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .containerjoueur{
+            position: fixed;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0,0,0,0.67);
+            backdrop-filter: blur(5px);
+            z-index: 6;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+       .inputlabel2 h1{
+        font-family: monospace;
+            font-size: 40px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+
+       }
+.inputlabel2 button{
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 25px;
+    border-radius: 15px;
+    border: none;
+}
+.containerequipe button{
+            width: 150px;
+            height: 60px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 20px;
+            border-radius: 15px;
+            border: none;
+        }
+        .containerequipe{
+        position: fixed;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(0,0,0,0.67);
+            backdrop-filter: blur(5px);
+            z-index: 9;
+            top:0;
+            left:0;
+            display: none;
+        }
+.attaquant1,.attaquant2,.attaquant3,.milieu1,.milieu2,.milieu3,.milieu4,.milieu5,.defenseur1,.defenseur2,.defenseur3,.defenseur4,.defenseur5,.gardien { 
+    display: none; 
+    position:absolute; 
+    top:450px; 
+    left:900px; 
+    cursor: pointer;
+ }
+ .joueur{
+    translate: -91% -90%;
+ }
+ .containerprincipale{
+    position:relative;
+    display: flex;
+    height: 180vh;
+    z-index: 18;
+}
+.containercompo img {
+    width: 100px;
+    height: 89px;
+}    
+.fifa button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(29, 29, 29);
+    width: 280px;
+    height: 280px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+}
+.fifa button img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    align-self: center;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+    
+}
+.fifa button img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+.fifa button h1{
+    position: relative;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    align-self: center;
+    font-size: 24px;
+    
+}
+.containertactique11,.containertactique8{
+    width: 1500px;
+    height: 900px;
+    position: fixed;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:100px;
+    left:250px;
+    border-radius: 30px;
+    border: 2px solid white;
+    z-index: 160;
+    
+}
+.tout{
+    width: 2000px;
+    height: 2000px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 155;
+}
+.fermiere button{
+    position:fixed;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color:white;
+    font-family: monospace;
+    font-size: 30px;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 161;
+    transition: all 0.5 ease;
+}
+.fermiere2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 161;
+}
+.fermiere2 button{
+    position:fixed;
+    background: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    color:rgb(255, 255, 255);
+    border-radius: 400px;
+    font-family: monospace;
+    font-size: 30px;
+    top: 110px;
+    left: 260px;
+    cursor: pointer;
+    z-index: 9;
+    transition: all 0.5s ease;
+}
+.fermiere2 button:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+}
+.containerbouton{
+    width: 500px;
+    height: 600px;
+    position: relative;
+    top: 53%;
+    left: 18%;
+    translate: -50% -50%;
+    flex-direction: column;
+    justify-content: center;
+}
+.containerbouton button{
+    width: 300px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 25px;
+    transition: all 0.5s ease;
+}
+.containerbouton button:hover{
+    transform: translateY(-3px);
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255);
+}
+.containerjoueurequipe{
+    width: 1500px;
+    height: 900px;
+    position: fixed;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:100px;
+    left:250px;
+    border-radius: 30px;
+    border: 2px solid white;
+    
+}
+.containerjoueurequipe button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(29, 29, 29);
+    width: 280px;
+    height: 280px;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 20px;
+}
+.imgdefoot img{
+    border-radius: 20px;
+    width: 890px;
+    height: 100vh;
+    translate: 0% -5%;
+
+}
+.containerstat{
+    width: 475px;
+    height: 600px;
+    position: fixed;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top: 50%;
+    right: 1%;
+    translate: 0% -50%;
+    border-radius: 30px;
+    border: 2px solid white;
+    z-index: 140;
+    display: none;
+}
+.but{
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 160px;
+    left: 40px;
+    background-color: rgba(0, 0, 0, 0.644);
+    backdrop-filter: blur(4px);
+    border-radius: 30px;
+    border: 2px solid white;
+    
+}
+.passedé{
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    background-color: rgba(0, 0, 0, 0.644);
+    backdrop-filter: blur(4px);
+    border-radius: 30px;
+    border: 2px solid white;
+    
+}
+.cartonjaune{
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 400px;
+    left: 40px;
+    background-color: rgba(0, 0, 0, 0.644);
+    backdrop-filter: blur(4px);
+    border-radius: 30px;
+    border: 2px solid white;
+    
+}
+.cartonrouge{
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 400px;
+    left: 270px;
+    background-color: rgba(0, 0, 0, 0.644);
+    backdrop-filter: blur(4px);
+    border-radius: 30px;
+    border: 2px solid white;
+    
+}
+.containerstat h1{
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    font-size: 20px;
+}
+.containerstat h2{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    position: absolute;
+    top: -30px;
+    left: 50px;
+    font-size: 100px;
+}
+.containerstat h3{
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    position: absolute;
+    top: 30px;
+ 
+    font-size: 30px;
+}
+.containertournoiencour{
+    position: fixed;
+    top: 5vh;
+    left: 1vw;
+    width: 22vw;
+    height: 50vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 3;
+}
+.containertournoiencour h1{
+    margin: 0;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.containertournoiencour .tournoiliste{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.tournoicarte{
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 12px 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.tournoicarte h3{
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+.tournoicarte button{
+    margin-top: 12px;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.tournoicarte button:hover{
+    transform: scale(1.03);
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.7);
+}
+.tournoi, .tournoi-matchlose, .tournoi-matchwin{
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    background: radial-gradient(circle at top left, rgba(245, 245, 245, 0.66) 0%, rgba(240, 240, 240, 0.75) 30%, rgba(78, 78, 78, 0.75) 65%, rgba(56, 56, 56, 0.73) 100%);
+    background-size: 180% 180%;
+    background-position: 0% 0%;
+    border-radius: 15px;
+    padding: 14px 14px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: background-position 0.55s ease, transform 0.3s ease;
+}
+.tournoi:hover{
+    background-position: 100% 125%;
+    transform: translateY(-2px);
+}
+.tournoi:hover h1, 
+.tournoi:hover span{
+    color: white;
+    transition: color 0.5s ease;
+}
+.tournoi span{
+    text-align: left;
+    font-size: 1.5vw;
+    color:black;
+    font-family: "Changa One", sans-serif;
+    position: relative;
+    padding-right: 10px ;
+    transition: color 0.3s ease;
+}
+.tournoi-matchwin:hover{
+    background-position: 100% 100%;
+    transform: translateY(-2px);
+}
+.tournoi-matchwin:hover h1, 
+.tournoi-matchwin:hover span{
+    transition: color 0.5s ease;
+}
+.tournoi-matchwin h1,.tournoi-matchlose h1,.tournoi h1{
+    padding-top:15px;
+    color:rgb(255, 255, 255);
+    transition: color 0.5s ease;
+}
+.tournoi-matchwin span, .tournoi-matchlose span{
+    text-align: left;
+    font-size: 25px;
+    color:rgb(255, 255, 255);
+    font-family: "Changa One", sans-serif;
+    position: relative;
+    padding-right: 10px ;
+    transition: color 0.3s ease;
+}
+.tournoi-matchlose:hover{
+    background-position: 100% 100%;
+    transform: translateY(-2px);
+}
+.tournoi-matchlosebutton{
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    background-color: rgba(34, 34, 34, 0.671);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    padding: 14px 14px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: background-position 0.55s ease, transform 0.3s ease;
+}
+.tournoi-matchlosebutton button{
+    background:none;
+    border:none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    color: white;
+    align-items: center;
+    font-family: "Share Tech Mono", monospace;
+    justify-content: center;
+    transition: background-position 0.55s ease, transform 0.3s ease;
+}
+.tournoi-matchlosebutton:hover{
+    transform: translateY(-2px);
+}
+.tournoi-matchlose:hover h1, 
+.tournoi-matchlose:hover span{
+    transition: color 0.5s ease;
+}
+.containerjoueurdelabase,.containerjoueurdemonequipe,.containerjoueurdetoutemonequipe{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    display: none;
+    z-index: 160;
+}
+.joueurliste{
+    width: 1500px;
+    height: 900px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    backdrop-filter: blur(3px);
+    top:100px;
+    overflow-y: auto;
+    left:250px;
+    border-radius: 30px;
+    border: 2px solid white;
+    z-index: 160;
+}
+.equipejoueur{
+    width: 400px;
+    height: 350px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    font-family: monospace;
+    padding: 12px;
+    border: 2px solid white;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+    flex-direction: column;
+    z-index: 160;
+}
+.equipejoueur .toty {
+    position: absolute;
+    top: 20px;
+    left: 112px;
+    width: 200px;
+    filter: brightness(0.85);
+    height: 189px;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.equipejoueur .imagedujoueurs {
+    position: relative;
+    z-index: 2;
+    top: 60px;
+    width: 120px;
+    height: 109px;
+    margin-top: -30px;
+}
+
+
+    .equipejoueur h1 {
+        position: relative;
+    top:55px;    
+    font-size: 12px;
+    z-index: 3;
+    margin: 10px 0;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    text-align: center;
+}
+
+.equipejoueur .flagss{
+    position: absolute;
+    top: 185px; 
+    z-index: 3;
+    left: 201px;
+    width: 20px;
+    height: 12px;
+}
+.equipejoueur button{
+    margin-top: 12px;
+    width: 300px;
+    position: absolute;
+    bottom: 10px;
+    left: 70px;
+    height: 40px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.equipejoueur button:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px white;
+    transition: all 0.5s ease;
+}
+.equipejoueur p{
+    position: relative;
+    bottom: -110px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.equipejoueur p1{
+    position: relative;
+    bottom: -100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.joueur .cheveux {
+    position: absolute;
+    top: -30px;            
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;          
+    height: auto;
+    z-index: 3;             
+    pointer-events: none;
+}
+.equipejoueur .cheuveux {
+    position: absolute;
+    top: -20px;    
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;       
+    height: auto;
+    z-index: 3;          
+    pointer-events: none;
+}
+.classement-liste{
+    left: 87%;
+    position: fixed;
+    z-index: 110;
+ }
+.logo{
+    right: 33vw;
+    top: 5vh;
+}     
+.t{
+    z-index: 110;
+}
+.posBouton{
+    width: 250px;
+    height: 150px;
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    translate: -50% -50%;
+    z-index: 110;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.posBouton button{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    color: white;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: monospace;
+    cursor: pointer;
+    border: 1px solid white; 
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.671);
+    perspective: 500px;
+    transition: all 0.5s ease;
+}
+.posBouton button:hover{
+    border: 1px solid black;
+    color: black;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.548);
+    transition: all 0.5s ease;
+}
+    </style>
+</head>
+<body>
+    <div class="fond">
+    <video autoplay muted loop playsinline class="loader">
+  <source src="Image/loader.mp4" type="video/mp4">
+    </video>
+    </div>
+    <audio id="audio" style="display:none;" controls>
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1></h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+    </div>
+    <div class="t">
+        <div class="posBouton">
+    <button onclick="ModifierMonCompte()">
+        Modifier mon compte
+    </button>
+    <button onclick="deconnexion()">
+        Se déconnecter
+    </button>
+        </div>
+<div class="containerprofil">
+    <h1>Profil</h1>
+    <button onclick="fermer()" id="fermiere45">✖</button>
+    <button onclick="OuvrirInput('mdp')">Changer de mot-de-passe</button>
+    <button onclick="OuvrirInput('id')">Changer d'identifiant</button>
+    <button onclick="supprimerMonCompte()">Supprimer mon compte</button>
+</div>
+    </div>
+    <div class="containerMdp">
+    <button onclick="fermer()" id="fermiere45">✖</button>
+    <input type="password" id="mdp" name="mdp" placeholder="Veuillez entrez votre nouveau mot-de-passe">
+    <button onclick="enregistrerMotDePasse()">
+    Enregistrer
+    </button>
+    </div>
+    <div class="containerId">
+    <button onclick="fermer()" id="fermiere45">✖</button>
+    <input type="text" id="id" name="id" placeholder="Veuillez entrez votre nouvel identifiant">
+    <button onclick="enregistrerIdentifiant()">
+    Enregistrer
+    </button>
+    </div>
+    <div class="containerjoueurdetoutemonequipe">
+
+    </div>
+    <div class="containerjoueurdemonequipe">
+
+    </div>
+    <div class="classement">
+</div>
+    <div class="containerstat">
+        <button onclick="fermerlesstat()" id="fermiere45">✖</button>
+        <h3>Le joueur</h3>
+        <div class="but">
+            <h1>But:</h1>
+            <h2>0</h2>
+        </div>
+        <div class="passedé">
+            <h1>Passes Décisives:</h1>
+            <h2>0</h2>
+        </div>
+        <div class="cartonjaune">
+            <h1>Carton Jaune:</h1>
+            <h2>0</h2>
+        </div>
+        <div class="cartonrouge">
+            <h1>Carton Rouge:</h1>
+            <h2>0</h2>
+        </div>
+    </div>
+    <div class="containerdetout">
+    <div class="containerjoueurdelabase">
+     
+    </div>
+<div class="containerprincipale">
+    <div class="imgdefoot">
+    <img src="Image/terraindefoot.png">
+    </div>
+    <div class="containercompo">
+        <div class="attaquant1 joueur" data-name="attaquant1">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="attaquant2 joueur" data-name="attaquant2">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="attaquant3 joueur" data-name="attaquant3">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="milieu1 joueur" data-name="milieu1">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="milieu2 joueur" data-name="milieu2">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="milieu3 joueur" data-name="milieu3">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="milieu4 joueur" data-name="milieu4">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="milieu5 joueur" data-name="milieu5">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="defenseur1 joueur" data-name="defenseur1">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="defenseur2 joueur" data-name="defenseur2">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="defenseur3 joueur" data-name="defenseur3">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="defenseur4 joueur" data-name="defenseur4">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+        <div class="defenseur5 joueur" data-name="defenseur5">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+
+        <div class="gardien joueur" data-name="gardien">
+            <img src="Image/S25TOTY.png" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueur">
+            <img src="Image/cheuveuxroue.png" class="cheveux">
+            <h1></h1>
+            <img src="" class="flag">
+        </div>
+    </div>
+    <div class="containertournoiencour"></div>
+     <div class="containertournoi"></div>
+<div class="containerbouton">
+        <button onclick="ouvrirtactique()">Choisir une tactique</button>
+        <button onclick="ouvrirlistejoueur()">Ajouter de nouveaux joueurs</button>
+        <button onclick="ouvrirlistejoueurequipe()">Supprimer des joueurs</button>
+    </div>
+<div class="tout">
+<div class="containertactique11">
+    <div class="fermiere">
+    <button onclick="fermerlestactiques()">✖</button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-4-2')"><img src="Image/4-4-2.png"><h1>4-4-2</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-3-3')"><img src="Image/4-3-3.png"><h1>4-3-3</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('5-3-2')"><img src="Image/5-3-2.png"><h1>5-3-2</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-2-3-1')"><img src="Image/4-2-3-1.png"><h1>4-2-3-1     <br> Perignat</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-1-4-1')"><img src="Image/4-1-4-1.png"><h1>4-1-4-1</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-5-1')"><img src="Image/4-5-1.png"><h1>4-5-1</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('5-4-1')"><img src="Image/5-4-1.png"><h1>5-4-1</h1></button>
+    </div>
+</div>
+<div class="containertactique8">
+    <div class="fermiere">
+    <button onclick="fermerlestactiques()">✖</button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('3-3-1')"><img src="Image/3-3-1.png"><h1>3-3-1</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('3-2-2')"><img src="Image/3-2-2.png"><h1>3-2-2</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('2-3-2')"><img src="Image/2-3-2.png"><h1>2-3-2</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('4-2-1')"><img src="Image/4-2-1.png"><h1>4-2-1</h1></button>
+    </div>
+    <div class="fifa">
+    <button onclick="fermertactique('2-4-2')"><img src="Image/4-2-1.png"><h1>4-2-1</h1></button>
+    </div>
+
+</div>
+</div>
+
+
+    <div class="containerequipe">
+        <div class="inputlabel">
+            <h1>Créer votre équipe</h1><br><br><br><br>
+            <div class="forme">
+                <label>Nom: </label>
+                <input type="text" id="nom" placeholder="Nom de l'équipe"><br><br>
+            </div><br><br>
+            <div class="forme">
+                 <label>Nombre de joueurs: </label>
+                <input type="text" id="nombre" placeholder="Nombre de joueurs"><br><br>
+            </div><br><br>
+            <div class="forme">
+                <h2>Type: </h2>>
+                <input type="radio" id="Homme" name="type" value="Homme">
+                <label for="Homme">Homme</label><br>
+                <input type="radio" id="Femme" name="type" value="Femme">
+                <label for="Femme">Femme</label><br>
+                <input type="radio" id="Mixte" name="type" value="Mixte">
+                <label for="Mixte">Mixte</label><br>
+            </div><br><br>
+           
+                <div class="forme">
+            <h2>Format de match:</h2>
+            <input type="radio" id="11c11" name="format" value="11c11">
+            <label for="11">11c11</label><br>
+            <input type="radio" id="8c8" name="format" value="8c8">
+            <label for="8c8">8c8</label><br>
+            <input type="radio" id="3c3" name="format" value="3c3">
+            <label for="3c3">3c3</label><br>
+            <input type="radio" id="1c1" name="format" value="1c1">
+            <label for="1c1">1c1</label><br>
+        </div>
+        <br><br>
+           
+    <div class="forme">
+        <button onclick="envoyerlesdonnees()">Créer l'équipe</button>
+    </div>
+    </div>
+    </div>
+    <div class="containerInfo">
+        <div class="information">
+        <h2></h2>
+    </div>
+    </div>
+    <div class="containercreer">
+        <button onclick="creerequipe()">Créer votre équipe 🏆</button>
+    </div>
+    <div class="logo">
+        <img src="Image/logo_WAF.png" width="200px" height="102px"></img>
+    </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set , get, child , push, update,remove,onValue} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAuth, onAuthStateChanged,signOut,deleteUser,updatePassword,updateEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfGCcd6DH-n6kySvjDVtaPjwH2HheywUc",
+            authDomain: "projet-foot-31fb0.firebaseapp.com",
+            databaseURL: "https://projet-foot-31fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "projet-foot-31fb0",
+            storageBucket: "projet-foot-31fb0.firebasestorage.app",
+            messagingSenderId: "645399152056",
+            appId: "1:645399152056:web:0ed1c60365d15f2ebf7b4d"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+let idCoach = "";
+
+onAuthStateChanged(auth, async (utilisateur) => {
+  if (!utilisateur) {
+    window.location.href = "connexion.html";
+    return;
+  }
+
+  const uid = utilisateur.uid;
+  const coach = await get(ref(database, "coach"));
+  const coaches = coach.val() || {};
+
+  for (const id in coaches) {
+  if (coaches[id].uid === uid) {
+    idCoach = id;
+    break;
+  }
+}
+const utilisateursRef = ref(database, "utilisateurs");
+const equipeRef = ref(database, "coach/" + idCoach + "/equipe/Joueurs");
+  await load();
+  onValue(utilisateursRef, () => {
+    joueurdelabase();
+    joueurdemonequipe();
+    mettrenomjoueur();
+});
+
+onValue(equipeRef, () => {
+    verifierequipeexiste();
+    chargerlacompo();
+    joueurdemonequipe();
+    mettrenomjoueur();
+    listetoutjoueurequipe();
+});
+});
+const containerdata = document.querySelector(".containercreer");
+const dbref = ref(database);
+async function verifierequipeexiste(){
+    const verif = await get(child(dbref, 'coach/' + idCoach));
+    const data = verif.val();
+    if (data.EquipeExiste === true){
+        containerdata.style.display = "none";
+        
+    }
+    else{
+        informationErreur("Vous n'avez pas encore d'équipe créer, veuillez cliquer sur le bouton pour en créer une.");
+    }
+}
+function envoyerlesdonnees() {
+            const nom = document.getElementById("nom").value;
+            const nombredejoueur = document.getElementById("nombre").value;
+            
+            const format = document.querySelector('input[name="format"]:checked');
+            const type = document.querySelector('input[name="type"]:checked');
+            if (!nom) {
+                informationErreur("Veuillez entrer un nom !");
+                return;
+            }
+            if (!nombredejoueur) {
+                informationErreur("Veuillez entrer un nombre de joueurs !");
+                return;
+            }
+            if (!format) {
+                informationErreur("Veuillez choisir un format !");
+                return;
+            }
+            if (!type) {
+                informationErreur("Veuillez choisir un type d'équipe !");
+                return;
+            }
+            
+            
+            
+            const donnees = {
+                nom: nom,
+                nombredejoueur: nombredejoueur,
+                format: format.value,
+                type: type.value
+                
+            };
+            set(ref(database, 'coach/' + idCoach + '/equipe'), donnees)
+            informationErreur("Equipe crée avec succés !");
+            document.querySelectorAll('input').forEach(input => {
+                if(input.type === 'text' || input.type === 'radio') 
+                    input.value = "";
+                });
+            set(ref(database, 'coach/' + idCoach + '/EquipeExiste'), true)
+            fermercreer();
+                
+        }
+        const bouton = document.querySelector(".containerequipe");
+        function creerequipe(){
+            containerdata.style.display = "none";
+            bouton.style.display = "flex";
+            
+        }
+        
+        function fermercreer(){
+            bouton.style.display = "none";
+        }
+ async function ajouterjoueur(joueurs) {
+    const verif = await get(child(dbref, 'coach/' + idCoach + '/equipe/nombredejoueur'));
+    const containerjoeuur = document.querySelector(".containerjoueur");
+    const nomequipe = await get(child(dbref, 'coach/' + idCoach + '/equipe/nom'));
+    const nomequipeVal = nomequipe.val();
+    let placesRestantes = verif.val(); 
+
+    const joueursequipe = await get(child(dbref, 'coach/' + idCoach + '/equipe/Joueurs'));
+    const joueursEquipe = joueursequipe.val() || {};
+        const dejaDansEquipe = Object.values(joueursEquipe).some(joueur => joueur.joueur === joueurs);
+        if (dejaDansEquipe) {
+            informationErreur("Le joueur " + joueurs + " est déjà dans votre équipe.");
+            return;
+        }
+
+    if (placesRestantes <= 0) {
+        informationErreur("Votre équipe est pleine !");
+        containerjoeuur.style.display = "none";
+        return; 
+    }
+    const nouveauNombre = placesRestantes - 1;
+    
+    const donnees = {
+        joueur: joueurs
+    };
+    push(ref(database, 'coach/' + idCoach + '/equipe/Joueurs'), donnees);
+    set(ref(database, 'coach/' + idCoach + '/equipe/nombredejoueur'), nouveauNombre);
+    set(ref(database, 'utilisateurs/' + joueurs + '/equipe'), nomequipeVal);
+    informationErreur("Le joueur " + joueurs + " a été ajouté à votre équipe.");
+    document.getElementById("joueur").value = "";
+    
+}
+
+
+
+async function ouvrirtactique(){
+    const Forma = await get(child(dbref, 'coach/' + idCoach + '/equipe/format'))
+    const format = Forma.val();
+    document.querySelector(".t").style.display = "none";
+    if(format === "11c11"){
+        document.querySelector(".containertactique11").style.display ="flex";
+    }
+    else if(format === "8c8"){
+        document.querySelector(".containertactique8").style.display ="flex";
+}
+document.querySelector(".tout").style.display ="flex";
+
+}
+function fermertactique(tactiqueequipe,containertactique){
+    const tout = document.querySelector(".tout");
+    tout.style.display ="none";
+    set(ref(database, "coach/" + idCoach + "/equipe/Compo"),tactiqueequipe);
+    //ia pour le coup je comprenais pas du tout
+    document.querySelectorAll(".attaquant1, .attaquant2, .attaquant3, .milieu1, .milieu2, .milieu3, .milieu4, .milieu5, .defenseur1, .defenseur2, .defenseur3, .defenseur4, .defenseur5, .gardien").forEach(imagequibug => {
+        imagequibug.style.display = "none";
+    });
+    const positions = tactique[tactiqueequipe];
+    positions.forEach(positionement => {
+        const joueurElement = document.querySelector("."+positionement.position);
+        joueurElement.style.display = "flex";
+        joueurElement.style.top = positionement.top;
+        joueurElement.style.left = positionement.left;
+    });
+}
+async function chargerlacompo() {
+        const Compo = await get(child(dbref, 'coach/' + idCoach + '/equipe/Compo'))
+        const compo = Compo.val();
+        if (compo === null){
+            fermertactique('4-3-3')
+        }
+        else{
+            fermertactique(compo);
+        }
+        }
+function fermerlestactiques(){
+    document.querySelector(".containertactique11").style.display = "none";
+    document.querySelector(".containertactique8").style.display = "none";
+    document.querySelector(".tout").style.display = "none";
+    document.querySelector(".t").style.display = "flex"
+    document.querySelector(".classement-liste").style.display = "flex";
+}
+async function verifienbrjoueur(){
+    const nbrjoueur = await get(child(dbref, 'coach/' + idCoach + '/equipe/nombredejoueur'))
+    const nbrjoueurval = nbrjoueur.val();
+    if (nbrjoueurval <= 0) {
+        informationErreur("Vous ne pouvais plus ajouter de joueur.");
+        return;
+    } else {
+        document.querySelector(".containerjoueur").style.display = "flex";
+    }
+}
+async function supprjoueur(){
+    const joueur = document.getElementById("joueur2").value;
+    const joueurref = await get(child(dbref, 'coach/' + idCoach + '/equipe/Joueurs/'))
+    const nbrjoueur = await get(child(dbref, 'coach/' + idCoach + '/equipe/nombredejoueur'));
+    const nbrejoueurval = nbrjoueur.val();
+    const joueurval = joueurref.val();
+    if(joueurval === ""){
+        informationErreur("Il n'y a aucun joueur dans votre équipe.");
+        return;
+    }
+    for(const key in joueurval){
+        if( joueurval[key].joueur === joueur){
+              
+              remove(child(dbref, 'coach/' + idCoach + '/equipe/Joueurs/' + key));
+              remove(child(dbref, 'utilisateurs/' + joueur + '/equipe'));
+              remove(child(dbref, 'utilisateurs/' + joueur + '/posteEquipe'));
+              set(ref(database, 'coach/' + idCoach + '/equipe/nombredejoueur'), nbrejoueurval + 1);
+              informationErreur("Le joueur a bien été supprimé.")
+              document.getElementById("joueur2").value = "";
+        }
+    };
+}
+let posteSelectionne = "";
+const tousLesPostes = document.querySelectorAll(".containercompo div");
+tousLesPostes.forEach(poste => {
+    poste.addEventListener("click", async function() {
+        const toutlesposteh1 = poste.querySelector("h1");
+        const joueurcoach = await get(child(dbref,"coach/" + idCoach + "/equipe/Joueurs"));
+        const joueurcoachval = joueurcoach.val();
+        if(joueurcoachval === null){
+        informationErreur("Vous n'avez aucun joueur dans votre équipe.");
+        return;
+        } 
+        else if (toutlesposteh1.textContent === ""){
+        posteSelectionne = this.getAttribute("data-name"); 
+        document.querySelector(".containerjoueurdemonequipe").style.display = "flex";
+        }
+        else{
+            ouvrirstatjoueur(toutlesposteh1.textContent);
+        }
+    });
+});
+async function ouvrirstatjoueur(nom){
+      const containerstat = document.querySelector(".containerstat");
+      document.querySelector(".classement").style.display = "none";
+      containerstat.style.display = "flex"
+      const h3 = document.querySelector(".containerstat h3");
+      h3.textContent = nom;
+      const but = await get(child(dbref, "utilisateurs/" + nom + "/stat/but"));
+      const butVal = but.val();
+      const passedé = await get(child(dbref, "utilisateurs/" + nom + "/stat/passedecissive"));
+      const passedéVal = passedé.val();
+      const cartonjaune = await get(child(dbref, "utilisateurs/" + nom + "/stat/cartonjaune"));
+      const cartonjauneVal = cartonjaune.val();
+      const cartonrouge = await get(child(dbref, "utilisateurs/" + nom + "/stat/cartonrouge"));
+      const cartonrougeVal = cartonrouge.val();
+      const h1but = document.querySelector(".but h2");
+      h1but.textContent = butVal || 0;
+      const h1passe = document.querySelector(".passedé h2");
+      h1passe.textContent = passedéVal || 0;
+      const h1jaune = document.querySelector(".cartonjaune h2");
+      h1jaune.textContent = cartonjauneVal || 0; 
+      const h1rouge = document.querySelector(".cartonrouge h2");
+      h1rouge.textContent = cartonrougeVal || 0;
+
+}
+ async function compojoueur(joueurs) {
+    const joueurDatabase = await get(child(dbref,"utilisateurs/" + joueurs + "/posteEquipe"));
+    const equidujoueur = await get(child(dbref, "utilisateurs/" + joueurs + "/equipe"));
+    const equipeducoach = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+    const equipeducoachVal = equipeducoach.val();
+    const equidujoueurVal = equidujoueur.val();
+    const joueurDatabaseVal = joueurDatabase.val();
+    if(equidujoueurVal !== equipeducoachVal){
+        informationErreur("Le joueur n'est pas dans l'équipe");
+        return;
+    }
+    if (joueurDatabaseVal === null){
+        const divJoueur = document.querySelector("." + posteSelectionne);
+        const h1 = divJoueur.querySelector("h1");
+        h1.textContent = joueurs;
+        set(ref(database, "utilisateurs/" + joueurs + "/posteEquipe"),posteSelectionne);
+        document.querySelector(".containerjoueurdemonequipe").style.display = "none";
+    }
+    else{
+        informationErreur("Votre joueur est déjà à un poste.");
+        return;
+    }
+};
+async function mettrenomjoueur() {
+    const snapshotUtilisateurs = await get(child(dbref, 'utilisateurs/'));
+    const utilisateurs = snapshotUtilisateurs.val();
+    const snapshotNomEquipe = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+    const nomequipeval = snapshotNomEquipe.val();
+    for(let key in utilisateurs) {
+        const joueur = utilisateurs[key];
+        if (joueur.equipe === nomequipeval) {
+            if(joueur.posteEquipe !== null){
+            const postecompo = joueur.posteEquipe;
+            const divJoueur = document.querySelector("." + postecompo);
+            if (divJoueur) {
+                const images = divJoueur.querySelector(".toty");
+                const imageee = divJoueur.querySelector(".cheveux");
+                const imagee = divJoueur.querySelector(".flag");
+                const h1 = divJoueur.querySelector("h1");
+                const nomcoup = joueur.cheveux || "Blond";
+                imageee.src = cheveux[nomcoup];
+                const nomstyle = joueur.styleCarte ; 
+                images.src = cartefifas[nomstyle] || cartefifas['S25FCPro'];
+                const flagstyle = joueur.drapeau;
+                imagee.src = drapeaux[flagstyle] || drapeaux['France'];
+                    h1.textContent = joueur.nom;
+            }
+        }
+                }
+            
+            
+        
+    };
+};
+function fermerlesstat(){
+    const containerstats = document.querySelector(".containerstat");
+    containerstats.style.display = "none";
+    document.querySelector(".classement").style.display = "flex";
+
+}//retrecicable de fou a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+async function chargertournois() {
+    const container = document.querySelector(".containertournoiencour");
+    const snapshot = await get(child(dbref, "organisateurs/"));
+    const tousLesOrganisateurs = snapshot.val() || {};
+    const tournoiducoach = await get(child(dbref, "coach/" + idCoach + "/tournoiInscrit"));
+    const tournoicoachval = tournoiducoach.val() || {};
+    const nomequipeducoach = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+    const nomequipeducoachval = nomequipeducoach.val();
+
+    container.innerHTML = "<h1>Tournois disponibles</h1><div class='tournoiliste'></div>";
+    const liste = container.querySelector(".tournoiliste");
+    if (tournoicoachval === true) {
+        for (let idorga in tousLesOrganisateurs) {
+            const nomOrga = tousLesOrganisateurs[idorga];
+            const listematch = await get(child(dbref, "organisateurs/" + idorga + "/tournoi/matchs/"));
+            const listematchval = listematch.val();
+            const listematch2 = await get(child(dbref, "organisateurs/" + idorga + "/tournoi/matchs2/"));
+            const listematchval2 = listematch2.val();
+            const listematch3 = await get(child(dbref, "organisateurs/" + idorga + "/tournoi/matchs3/"));
+            const listematchval3 = listematch3.val();
+            const listematch4 = await get(child(dbref, "organisateurs/" + idorga + "/tournoi/matchs4/"));
+            const listematchval4 = listematch4.val();
+            const listematch5 = await get(child(dbref, "organisateurs/" + idorga + "/tournoi/matchs5/"));
+            const listematchval5 = listematch5.val();
+                for (let match in listematchval) {
+                    if (listematchval[match].equipeA === nomequipeducoachval || listematchval[match].equipeB === nomequipeducoachval) {
+                        container.innerHTML = "<h1>Matchs à venir et terminés</h1><div class='tournoiliste'></div>";
+                        if(listematchval[match].matchFini !== true){
+                        const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi">
+                    <span>${listematchval[match].equipeA} <span style="font-size: 15px; padding-right: 20px; padding-left: 20px;">CONTRE</span> ${listematchval[match].equipeB}</span>
+                    <h1>16ème de Final</h1>
+                </div>`;
+            }else{
+                if(listematchval[match].vainqueur === nomequipeducoachval){
+                const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi-matchwin">
+                    <span>${listematchval[match].equipeA}<span style="padding-right: 20px; padding-left: 20px;">${listematchval[match].equipeAbut || 0} - ${listematchval[match].equipeBbut || 0}</span> ${listematchval[match].equipeB}</span>
+                    <h1>16ème de Final</h1>
+                </div>`;
+            }else{
+                const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi-matchlose">
+                    <span>${listematchval[match].equipeA}<span style="padding-right: 20px; padding-left: 20px;">${listematchval[match].equipeAbut || 0} - ${listematchval[match].equipeBbut || 0}</span> ${listematchval[match].equipeB}</span>
+                    <h1>16ème de Final</h1>
+                </div>
+                <div class="tournoi-matchlosebutton">
+                    <button>Quitter le tournoi</button>
+                </div>`;
+            }
+            }
+                    }
+                }
+                for (let match in listematchval2) {
+                    if (listematchval2[match].equipeA === nomequipeducoachval || listematchval2[match].equipeB === nomequipeducoachval) {
+                        const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi">
+                    <span>${listematchval2[match].equipeA} <span style="font-size: 15px; padding-right: 20px; padding-left: 20px;">CONTRE</span> ${listematchval2[match].equipeB}</span>
+                    <h1>8ème de Final</h1>
+                </div>`;
+                    }
+                }
+                for (let match in listematchval3) {
+                    if (listematchval3[match].equipeA === nomequipeducoachval || listematchval3[match].equipeB === nomequipeducoachval) {
+                        const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi">
+                    <span>${listematchval3[match].equipeA} <span style="font-size: 15px; padding-right: 20px; padding-left: 20px;">CONTRE</span> ${listematchval3[match].equipeB}</span>
+                    <h1>Quart de Final</h1>
+                </div>`;
+                    }
+                }
+                for (let match in listematchval4) {
+                    if (listematchval4[match].equipeA === nomequipeducoachval || listematchval4[match].equipeB === nomequipeducoachval){
+                        const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi">
+                    <span>${listematchval4[match].equipeA} <span style="font-size: 15px; padding-right: 20px; padding-left: 20px;">CONTRE</span> ${listematchval4[match].equipeB}</span>
+                    <h1>Demi-final</h1>
+                </div>`;
+                    }
+                }
+                for (let match in listematchval5) {
+                    if (listematchval5[match].equipeA === nomequipeducoachval || listematchval5[match].equipeB === nomequipeducoachval) {
+                        const liste = container.querySelector(".tournoiliste");
+                        liste.innerHTML += `
+                <div class="tournoi">
+                    <span>${listematchval5[match].equipeA} <span style="font-size: 15px; padding-right: 20px; padding-left: 20px;">CONTRE</span> ${listematchval[match].equipeB}</span>
+                    <h1>Final</h1>
+                </div>`;
+                    }
+                }
+        }
+
+        
+    }else{
+    for (let idOrga in tousLesOrganisateurs) {
+        let orga = tousLesOrganisateurs[idOrga];
+        if (orga.tournoi && orga.tournoiExiste !== false) {
+            let t = orga.tournoi;
+            const format = t.format;
+            liste.innerHTML += `
+                <div class="tournoicarte">
+                    <h2>${orga.identifiant}</h2>
+                    <h3>Lieu: ${t.lieu}</h3>
+                    <p>${t.date} à ${t.heure}</p>
+                    <p>Format: ${t.format} | Récompense: ${t.recompense}</p>
+                    <button onclick="inscrireTournoi('${idOrga}','${format}')">
+                        S'inscrire
+                    </button>
+                </div>`;
+        }
+    }
+    }
+}
+async function inscrireTournoi(idOrga,format) {
+    const nom = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+    const nomEquipe = nom.val();
+    const tournoicoach = await get(child(dbref,"coach/" + idCoach + "/tournoiInscrit"))
+    const tournoiCoach = tournoicoach.val();
+    const formatcoach = await get(child(dbref,"coach/" + idCoach + "/equipe/format"))
+    const utilisateurs = await get(child(dbref,"utilisateurs/"));
+    const nbreequipetournoi = await get(child(dbref,"organisateurs/" + idOrga + "/tournoi/nombreEquipes"));
+    const nbreequipetournoival = nbreequipetournoi.val();
+    const utilisateursval = utilisateurs.val();
+    const formatCoach = formatcoach.val();
+    if(tournoiCoach === true){
+        informationErreur("Vous êtes déjà inscrit à un tournoi !");
+        return;
+    }
+    if(nbreequipetournoival <= 0){
+        informationErreur("Le tournoi est complet !");
+        return;
+    }
+    if (formatCoach !== format){
+        informationErreur("Le format de votre équipe n'est pas adapté à ce tournoi.");
+        return;
+    }
+    const donnée = {
+        coach: idCoach,
+        equipe: nomEquipe
+
+    }
+    await set(ref(database, "organisateurs/" + idOrga + "/tournoi/inscriptions/" + idCoach), donnée);
+    await set(ref(database, "coach/" + idCoach + "/tournoiInscrit"), true)
+    await set(ref(database, "organisateurs/" + idOrga + "/tournoi/nombreEquipes"), nbreequipetournoival - 1);
+    const données = {
+        but: 0,
+        cartonrouge: 0,
+        cartonjaune: 0,
+        passedecissive: 0,
+
+    }
+    for(let joueur in utilisateursval){
+        const j = utilisateursval[joueur];
+        if(j.equipe === nomEquipe){
+            await set(ref(database,"utilisateurs/" + joueur + "/stat/"),données);
+        }
+    }
+    informationErreur("Inscription réussie !");
+    chargertournois();
+}
+async function joueurdelabase() {
+     const container = document.querySelector(".containerjoueurdelabase");
+     const listejoueur = await get(child(dbref, "utilisateurs/"));
+     const joueurs = listejoueur.val();
+     container.innerHTML = "<div class='fermiere2'><button onclick='fermer()'>✖</button></div><div class='joueurliste'></div>";
+     const liste = container.querySelector(".joueurliste");
+     let tableau = [];
+     liste.innerHTML ="";
+     for (let id in joueurs) {
+         if(joueurs[id].equipe == null){
+         let j = joueurs[id];
+         tableau.push(j);
+         const styleCarte = j.styleCarte || "S25TOTY";
+         const drapeauxe = j.drapeau || "France";
+         const cheveuxx = j.cheveux || "Blond";
+         liste.innerHTML += `
+             <div class="equipejoueur">
+             <img src="${cartefifas[styleCarte] || "Image/S25TOTY.png"}" class="toty">
+             <img src="Image/imagejoueur.png" class="imagedujoueurs">
+                 <h1>${j.nom}</h1>
+                <img src="${drapeaux[drapeauxe]}" class="flagss">
+                 <p1>Poste: ${j.poste} | Pied: ${j.pied_fort}</p1>
+                 <img src="${cheveux[cheveuxx]}" class="cheuveux">
+                 <p>Né(e) le: ${j.age}</p>
+                 <button onclick="ajouterjoueur('${j.identifiant}')">
+                     Ajouter le joueur
+                 </button>
+             </div>`;
+             mettrenomjoueur();    
+     }
+     mettrenomjoueur();
+}
+}
+async function ouvrirlistejoueur() {
+  const nombrejoueur = document.querySelectorAll(".joueurliste .equipejoueur").length;
+  document.querySelector(".t").style.display = "none";
+  if (nombrejoueur === 0) {
+    informationErreur("Aucun joueur n'est disponible pour le moment.");
+    return;
+  }
+  document.querySelector(".containerjoueurdelabase").style.display = "flex";
+}
+function fermer(){
+    document.querySelector(".containerjoueurdelabase").style.display = "none";
+    document.querySelector(".t").style.display = "flex";
+    document.querySelector(".containerprofil").style.display = "none";
+    if(document.querySelector(".containerId").style.display === "flex" || document.querySelector(".containerMdp").style.display === "flex"){
+        document.querySelector(".containerId").style.display = "none";
+        document.querySelector(".containerMdp").style.display = "none";
+        document.querySelector(".containerprofil").style.display = "flex";
+    }
+    document.querySelector(".containerjoueurdemonequipe").style.display = "none";
+    document.querySelector(".containerjoueurdetoutemonequipe").style.display = "none";
+
+}
+async function joueurdemonequipe(){
+    const container = document.querySelector(".containerjoueurdemonequipe");
+    const listejoueur = await get(child(dbref, "utilisateurs/"));
+    const nomequipe = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+    const nomequipeval = nomequipe.val();
+    const joueurs = listejoueur.val();
+    container.innerHTML = "<div class='fermiere2'><button onclick='fermer()'>✖</button></div><div class='joueurliste'></div>";
+    const liste = container.querySelector(".joueurliste");
+    liste.innerHTML ="";
+    for (let id in joueurs) {
+        let j = joueurs[id];
+        if(j.equipe === nomequipeval && j.posteEquipe == null){
+            const styleCarte = j.styleCarte || "S25TOTY";
+        const drapeauxe = j.drapeau || "France";
+        const cheveuxx = j.cheveux || "Blond";
+        liste.innerHTML += `
+            <div class="equipejoueur">
+            <img src="${cartefifas[styleCarte] || "Image/S25TOTY.png"}" class="toty">
+            <img src="Image/imagejoueur.png" class="imagedujoueurs">
+                <h1>${j.nom}</h1>
+                <img src="${drapeaux[drapeauxe]}" class="flagss">
+                <img src="${cheveux[cheveuxx]}" class="cheuveux">
+                <p1>Poste: ${j.poste} | Pied: ${j.pied_fort}</p1>
+                <p>Né(e) le: ${j.age}</p>
+                <button onclick="compojoueur('${j.identifiant}')">
+                    Placer le joueur
+                </button>
+            </div>`;
+            mettrenomjoueur();  
+    }
+    }
+    mettrenomjoueur();
+}async function listetoutjoueurequipe(){
+     const container = document.querySelector(".containerjoueurdetoutemonequipe");
+     const listejoueur = await get(child(dbref, "utilisateurs/"));
+     const nomequipe = await get(child(dbref, "coach/" + idCoach + "/equipe/nom"));
+     const nomequipeval = nomequipe.val();
+     const joueurs = listejoueur.val();
+     container.innerHTML = "<div class='fermiere2'><button onclick='fermer()'>✖</button></div><div class='joueurliste'></div>";
+     const liste = container.querySelector(".joueurliste");
+     liste.innerHTML ="";
+     for (let id in joueurs) {
+         let j = joueurs[id];
+         if(j.equipe === nomequipeval){
+             const styleCarte = j.styleCarte || "S25TOTY";
+        const drapeauxe = j.drapeau || "France";
+        const cheveuxx = j.cheveux || "Blond";
+         liste.innerHTML += `
+             <div class="equipejoueur">
+             <img src="${cartefifas[styleCarte] || "Image/S25TOTY.png"}" class="toty">
+             <img src="Image/imagejoueur.png" class="imagedujoueurs">
+                 <h1>${j.nom}</h1>
+                 <img src="${drapeaux[drapeauxe]}" class="flagss">
+                 <p1>Poste: ${j.poste} | Pied: ${j.pied_fort}</p1>
+                 <img src="${cheveux[cheveuxx]}" class="cheuveux">
+                 <p>Né(e) le: ${j.age}</p>
+                 <button onclick="supprimerjoueurequipe('${j.identifiant}')">
+                     Supprimer de l'équipe
+                 </button>
+             </div>`;
+             mettrenomjoueur(); 
+         }  
+     }
+     mettrenomjoueur();
+ }
+async function ouvrirlistejoueurequipe(){
+    const joueurcoach = await get(child(dbref,"coach/" + idCoach + "/equipe/Joueurs"));
+    const joueurcoachval = joueurcoach.val();
+    document.querySelector(".t").style.display = "none";
+    if(joueurcoachval === null){
+        informationErreur("Vous n'avez aucun joueur dans votre équipe.");
+        return;
+    }
+     document.querySelector(".containerjoueurdetoutemonequipe").style.display = "flex";
+     mettrenomjoueur();
+ }
+async function supprimerjoueurequipe(joueur){
+    await remove(child(dbref,"utilisateurs/" + joueur + "/equipe"));
+    await remove(child(dbref,"utilisateurs/" + joueur + "/posteEquipe"));
+    const joueurequipe = await get(child(dbref, "coach/" + idCoach + "/equipe/Joueurs"));
+     const joueursEquipe = joueurequipe.val();
+     for (const code in joueursEquipe) {
+        if (joueursEquipe[code].joueur === joueur) {
+           await remove(child(dbref, "coach/" + idCoach + "/equipe/Joueurs/" + code));
+        }
+    }
+    informationErreur("Le joueur a été supprimé de l'équipe.");
+    joueurdemonequipe();
+    joueurdelabase();
+    mettrenomjoueur();
+}
+async function classement(type = "but") {
+  const classementdiv = document.querySelector(".classement");
+  const listejoueur = await get(child(dbref, "utilisateurs/"));
+  const listejoueurval = listejoueur.val() || {};
+  const listejoueurcoach = await get(child(dbref,"coach/" + idCoach + "/equipe/Joueurs/"));
+  const listejoueurcoachval = listejoueurcoach.val();
+
+  classementdiv.innerHTML = `<div class="classement-liste">
+    <h1>Classement</h1>
+    <button id="classement-but" onclick="classement('but')">Meilleur buteur</button>
+    <button id="classement-passe" onclick="classement('passe')">Meilleur passeur</button>
+    <button id="classement-cartonrouge" onclick="classement('cartonrouge')">Plus grand nombre de carton rouge</button>
+    <button id="classement-cartonjaune" onclick="classement('cartonjaune')" style="margin-bottom:40px;">Plus grand nombre de carton jaune</button>
+    </div>`;
+  const liste = classementdiv.querySelector(".classement-liste");
+  const idBoutonActif = "classement-" + type;
+  const boutonActif = document.getElementById(idBoutonActif);
+  boutonActif.classList.add("actif");
+
+  let tableaujoueurbut = [];
+  let tableaujoueurpasse = [];
+  let tableaujoueurcartonrouge = [];
+  let tableaujoueurcartonjaune = [];
+  let index = [0,"👑","🥈","🥉"];
+  for (const joueur in listejoueurval) {
+    tableaujoueurbut.push([joueur, listejoueurval[joueur].stat?.but || 0]);
+    tableaujoueurpasse.push([joueur, listejoueurval[joueur].stat?.passedecissive || 0]);
+    tableaujoueurcartonrouge.push([joueur, listejoueurval[joueur].stat?.cartonrouge || 0]);
+    tableaujoueurcartonjaune.push([joueur, listejoueurval[joueur].stat?.cartonjaune || 0]);
+  }
+
+  tableaujoueurbut.sort((a, b) => b[1] - a[1]);
+  tableaujoueurpasse.sort((a, b) => b[1] - a[1]);
+  tableaujoueurcartonrouge.sort((a, b) => b[1] - a[1]);
+  tableaujoueurcartonjaune.sort((a, b) => b[1] - a[1]);
+  let types = ["but", "passe", "cartonrouge", "cartonjaune"];
+  let tableau = [tableaujoueurbut, tableaujoueurpasse, tableaujoueurcartonrouge, tableaujoueurcartonjaune];
+  let emojie = ["⚽","👟","🟥","🟨"];
+  for(let idx in tableau){
+    if(type === types[idx]){
+        for (let i = 0; i < tableau[idx].length && i < 10; i++) {
+        const rang = i + 1;
+        for(let joueurcoach in listejoueurcoachval){
+            if(listejoueurcoachval[joueurcoach].joueur === tableau[idx][i][0]){
+             liste.innerHTML += `
+                <div class="classement-liste-joueur" data-rang="${rang}">
+                    <span class="rang">${index[rang] || rang}</span><span class="nom">${tableau[idx][i][0]}</span><span class="buts">${tableau[idx][i][1]} ${emojie[idx]}</span>
+                </div>`;
+  }
+}
+  }
+}
+  }
+}
+async function load(){
+    document.querySelector(".fond").style.display = "flex";
+    await verifierequipeexiste();
+    await chargerlacompo();
+    await mettrenomjoueur();
+    await classement();
+    await listetoutjoueurequipe();
+    await joueurdemonequipe();
+    await joueurdelabase();
+    await chargertournois();
+    document.querySelector(".fond").style.display = "none";
+
+}
+async function supprimerMonCompte() {
+    let identifiant = idCoach;
+    const user = auth.currentUser;
+    if (confirm("Voulez-vous vraiment supprimer votre compte définitivement ?")) {
+        try {
+            await remove(ref(database, "coach/" + identifiant));
+            await deleteUser(user);
+            window.location.href = "connexion.html";
+            informationErreur("Votre compte a été supprimé avec succès.");
+        } catch (error) {
+            console.error(error);
+            if (error.code === 'auth/requires-recent-login') {
+                informationErreur("Veuillez vous déconnecter et vous reconnecter avant de supprimer votre compte.");
+                setTimeout(() =>{
+                    window.location.href = "connexion.html";
+                },2000)
+        }
+        }
+    }
+};
+async function deconnexion(){
+    await signOut(auth);
+    window.location.href = "connexion.html";
+}
+function OuvrirInput(types){
+    if(types === "mdp"){
+        document.querySelector(".containerMdp").style.display = "flex";
+    }
+    else if(types === "id"){
+        document.querySelector(".containerId").style.display = "flex";
+    }
+}
+async function enregistrerMotDePasse(){
+    const mdp = document.getElementById("mdp").value;
+try{
+    await updatePassword(auth.currentUser, mdp);
+    informationErreur("Nouveau mot-de-passe enregistré");
+    document.querySelector(".containerMdp").style.display ="none";
+}catch(error){
+    console.error(error);
+    if(error.code === "auth/requires-recent-login"){
+        informationErreur("Vous allez etre redirigé vers la page de connexion.");
+        setTimeout(() =>{
+            window.location.href = "connexion.html";
+        },2000)
+    }
+}
+}
+async function enregistrerIdentifiant(){
+    const id = document.getElementById("id").value;
+    const emailTechnique = id.trim() + "@WeAreFoot.com";
+try{    
+    await set(ref(database,"coach/" + idCoach + "/identifiant"), id);
+    const donneeCoach = await get(child(dbref,"coach/" + idCoach));
+    const donnee = donneeCoach.val();
+    await updateEmail(auth.currentUser, emailTechnique);
+    await set(ref(database,"coach/" + id),donnee);
+    await remove(ref(database,"coach/" + idCoach));
+    idCoach = id;
+    informationErreur("Nouvel identifiant enregistré en" + id);
+    document.querySelector(".containerId").style.display ="none";
+}catch(error){
+    console.error(error);
+    if(error.code === "auth/requires-recent-login"){
+        informationErreur("Vous allez etre redirigé vers la page de connexion.");
+        setTimeout(() =>{
+            window.location.href = "connexion.html";
+        },2000)
+    }
+    }
+}
+function ModifierMonCompte(){
+    document.querySelector(".containerprofil").style.display = "flex";
+}
+window.ModifierMonCompte = ModifierMonCompte;
+window.enregistrerMotDePasse = enregistrerMotDePasse;
+window.enregistrerIdentifiant = enregistrerIdentifiant;
+window.OuvrirInput = OuvrirInput;
+window.deconnexion = deconnexion;
+window.supprimerMonCompte = supprimerMonCompte;    
+window.load = load;
+window.classement = classement;
+window.supprimerjoueurequipe = supprimerjoueurequipe;
+window.ouvrirlistejoueurequipe =ouvrirlistejoueurequipe;
+window.listetoutjoueurequipe = listetoutjoueurequipe;
+window.joueurdemonequipe = joueurdemonequipe;
+window.fermer = fermer;
+window.ouvrirlistejoueur = ouvrirlistejoueur;
+window.joueurdelabase = joueurdelabase;
+window.inscrireTournoi = inscrireTournoi;
+window.mettrenomjoueur = mettrenomjoueur;
+window.fermerlesstat = fermerlesstat;
+window.ouvrirstatjoueur = ouvrirstatjoueur;
+window.compojoueur = compojoueur;
+window.supprjoueur=supprjoueur;
+window.verifienbrjoueur = verifienbrjoueur;
+window.chargertournois = chargertournois;
+window.fermerlestactiques = fermerlestactiques;
+window.fermertactique = fermertactique;
+window.ouvrirtactique = ouvrirtactique;
+window.ajouterjoueur = ajouterjoueur;
+window.creerequipe = creerequipe;
+window.envoyerlesdonnees = envoyerlesdonnees;
+window.verifierequipeexiste = verifierequipeexiste;
+    </script>
+    <script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
+

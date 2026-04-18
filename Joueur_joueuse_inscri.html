@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription/Connection Joueur/joueuse</title>
+    <link rel="stylesheet" href="cssidentique.css">
+    <link rel="icon" type="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png" href="https://static.vecteezy.com/system/resources/thumbnails/011/421/474/small_2x/soccer-ball-realistic-png.png">
+    <style>
+        html{
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        body{
+            background-image: url("Image/concept-jeu-football_23-2151043843\ \(1\).png");
+            background-size: cover;
+            justify-content: center;
+            display: flex;
+        }
+        .inscrire{
+            position: absolute;
+            display: flex;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            width: 50vw;
+            height: 50vh;
+            align-items: center;
+            justify-content: center;   
+        }
+        .inscrire button{
+            font-size: 40px;
+            font-family: monospace;
+            border-radius: 30px;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            margin-left: 50px;
+            margin-right: 50px;
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            border: 5px solid white;
+            transition: all 0.5s ease;
+        }
+        .inscrire button:hover{
+            transform: scale(1.1);
+            transition: all 0.5s ease;
+            box-shadow: 0px 0px 20px white;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20" fill="gold">⚽</text></svg>'), auto;
+        }
+        .logo{
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 4;
+       }
+        .tour{
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            top: 0%;
+            left: 50%;
+            border-radius: 20px;
+            width: 600px;
+            height: 10px;
+            translate: -50% -50%;
+            flex-direction: column;
+            background-color: rgb(0, 0, 0,0.4);
+            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            transition: all 0.5s ease;
+            
+        }
+        .tour h1{
+            font-family: monospace;
+            font-size: 40px;
+            text-align: left;
+            color: white;
+            position: fixed;
+            top: 0;
+        }
+        .tour button{
+            width: 150px;
+            height: 40px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 20px;
+            border-radius: 15px;
+            border: none;
+        }
+        .tour button:hover{
+            transform: scale(1.1);
+        }
+        .tour header{
+            color: white;
+            font-family: monospace;
+            font-size: 30px;
+            text-align: center;
+            position: relative;
+            top: 35px;
+            font-size: 40px;
+            margin-bottom: 40px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="containerInfo">
+        <div class="information">
+        <h2></h2>
+    </div>
+    </div>
+    <audio id="audio" style="display:none;">
+        <source src="" type="audio/mpeg">
+    </audio>
+    <div class="spotizer">
+        <h1></h1>
+        <button onclick="musiquePrecedente()" id="precedente">⏮</button>
+        <button onclick="lancerouarreterlamusique()" id="pauseouplay">▶</button>
+        <button onclick="musiquesuivante()" id="suivante" style="margin-right: 50px;">⏭</button>
+        <button onclick="descendrevolume()" id="volumeup">-</button>
+        <button onclick="coupervolume()" id="volumeshut">🔉</button>
+        <button onclick="montervolume()" id="volumedown">+</button>
+    </div>
+    <div class="logo">
+        <img src="Image/logo_WAF.png" width="200px" height="102px"></img>
+    </div>
+    <div class="tour">
+        <header>Inscription</header>
+        
+    <div class="forme">
+        <input type="text" id="id" name="identifiant" placeholder="Identifiant">
+    </div>   
+    <br><br>
+    <div class="forme">
+        <input type="password" id="mdp" name="mot_de_passe" placeholder="Votre mot-de-passe">
+    </div>  
+    <br><br> 
+    <div class="forme">
+        <input type="text" id="nom" name="nom" placeholder="Votre nom">
+    </div>   
+    <br><br>
+    <div class="forme">
+        <label> Ta date de naisance: </label>
+        <input type="date" id="age" name="age">
+        </div>
+        <br><br>
+    <div class="forme1">
+        <h2>Ton sexe: </h2>
+        <input type="radio" id="Homme" name="sexe" value="Homme">
+        <label for="Homme">Homme</label><br>
+        <input type="radio" id="Femme" name="sexe" value="Femme">
+        <label for="Femme">Femme</label><br>
+        <input type="radio" id="Autre" name="sexe" value="Autre">
+        <label for="Autre">Non precisé</label><br>
+    </div> 
+    <br><br><br> 
+    <div class="forme1">
+        <h2>Pied fort: </h2>
+        <input type="radio" id="gauche" name="pied_fort" value="gauche">
+        <label for="gauche">Gauche</label><br>
+        <input type="radio" id="droit" name="pied_fort" value="droit">
+        <label for="droit">Droit</label><br>
+        <input type="radio" id="des_deux" name="pied_fort" value="des deux">
+        <label for="des deux">Les deux</label><br>
+    </div>
+    <br><br>
+    <div class="forme1">
+        <h2>Ton poste: </h2>
+        <input type="radio" id="attaquant" name="poste" value="attaquant">
+        <label for="attaquant">Attaquant</label><br>
+        <input type="radio" id="milieu" name="poste" value="milieu">
+        <label for="milieu">Milieu</label><br>
+        <input type="radio" id="defenseur" name="poste" value="defenseur">
+        <label for="defenseur">Defenseur</label><br>
+        <input type="radio" id="gardien" name="poste" value="gardien">
+        <label for="gardien">Gardien</label><br>
+        
+    </div>
+    <br><br><br><br><br><br>
+
+    <button onclick="envoyerlesdonnees()">S'inscrire</button>    
+    </div>
+    <div class="inscrire">
+        <button onclick="ouvririnscription()">Inscription</button>
+        <a href="connexion.html">
+        <button>Connexion</button>
+        </a>
+    </div>
+    <div class="accueil">
+        <a href="accueil.html">
+        <button>⚽Accueil</button>
+        </a>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set,child,get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfGCcd6DH-n6kySvjDVtaPjwH2HheywUc",
+            authDomain: "projet-foot-31fb0.firebaseapp.com",
+            databaseURL: "https://projet-foot-31fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "projet-foot-31fb0",
+            storageBucket: "projet-foot-31fb0.firebasestorage.app",
+            messagingSenderId: "645399152056",
+            appId: "1:645399152056:web:0ed1c60365d15f2ebf7b4d"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const dbref = ref(database);
+        const auth = getAuth(app);
+        window.envoyerlesdonnees = async function() {
+            const utilisateurs = await get(child(dbref,"utilisateurs/"));
+            const utilisateursval = utilisateurs.val();
+            const age = document.getElementById("age").value;
+            const identifiant = document.getElementById("id").value;
+            const nom = document.getElementById("nom").value;
+            const mdp = document.getElementById("mdp").value;
+            const pied = document.querySelector('input[name="pied_fort"]:checked')?.value;
+            const poste = document.querySelector('input[name="poste"]:checked')?.value;
+            const sexeUtilisateur = document.querySelector('input[name="sexe"]:checked')?.value;
+            const chemin = ["coach","utilisateurs","organisateurs"];
+            if (!identifiant) {
+                informationErreur("Veuillez entrer un identifiant !");
+                return;
+            }
+            for(const i in chemin){
+                const user = await get(child(dbref, chemin[i] +"/"+identifiant));
+                if(user.exists()){
+                    informationErreur("Identifiant déjà utilisé !");
+                    return;
+                }
+            }
+            if (!mdp) {
+                informationErreur("Veuillez entrer un mot de passe !");
+                return;
+            }
+            if (!nom) {
+                informationErreur("Veuillez entrer un nom !");
+                return;
+            }
+            if (!age) {
+                informationErreur("Veuillez entrer un age !");
+                return;
+            }
+            if (!pied) {
+                informationErreur("Veuillez choisir un pied fort !");
+                return;
+            }
+            if (!poste) {
+                informationErreur("Veuillez choisir un poste !");
+                return;
+            }
+            if (!sexeUtilisateur) {
+                informationErreur("Veuillez choisir un sexe !");
+                return;
+            }
+            const emailTechnique = identifiant.trim() + "@WeAreFoot.com";
+            const compteutilisateur = await createUserWithEmailAndPassword(auth, emailTechnique, mdp);
+            const user = compteutilisateur.user;
+            const donnees = {
+                identifiant: identifiant,
+                uid: user.uid,
+                age: age,
+                nom: nom,
+                pied_fort: pied,
+                poste: poste,
+                sexe: sexeUtilisateur,
+                styleCarte: "S25TOTY",
+                drapeau: "France"
+            };
+
+            await set(ref(database, 'utilisateurs/' + identifiant), donnees);
+            informationErreur("Données envoyées avec succès !");
+            window.location.href = "connexion.html";
+            document.querySelectorAll('input').forEach(input => {
+                if(input.type === 'text' || input.type === 'password' || input.type === 'date' || input.type === 'radio') 
+                    input.value = "";
+                    });
+
+        }
+        window.ouvririnscription = function(){
+            document.querySelector(".tour").style.display = "flex";
+            document.querySelector(".inscrire").style.display = "none";
+            setTimeout(() =>{
+                document.querySelector(".tour").style.height = "990px";
+                document.querySelector(".tour").style.top = "50%";
+            })
+        }
+</script>
+<script src="codeduplique.js"></script>
+</body>
+</html>
+
+
+
